@@ -1,0 +1,181 @@
+unit Unit_Marcacao_1_Aluno;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes,
+  System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Effects,
+  FMX.Objects, FMX.Layouts, FMX.StdCtrls, FMX.ListBox,
+  FMX.Controls.Presentation;
+
+type
+  TFrm_Marcacao_1_Aluno = class(TForm)
+    GroupBox1: TGroupBox;
+    ComboBox2: TComboBox;
+    Label3: TLabel;
+    ComboBox3: TComboBox;
+    Label4: TLabel;
+    ComboBox4: TComboBox;
+    Label5: TLabel;
+    GroupBox2: TGroupBox;
+    ScaledLayout6: TScaledLayout;
+    Image3: TImage;
+    Label6: TLabel;
+    ShadowEffect3: TShadowEffect;
+    ScaledLayout1: TScaledLayout;
+    Image1: TImage;
+    Label1: TLabel;
+    ShadowEffect1: TShadowEffect;
+    ScaledLayout2: TScaledLayout;
+    Image2: TImage;
+    Label2: TLabel;
+    ShadowEffect2: TShadowEffect;
+    procedure Image1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image1MouseEnter(Sender: TObject);
+    procedure Image1MouseLeave(Sender: TObject);
+    procedure Image1MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image3MouseEnter(Sender: TObject);
+    procedure Image3MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image3MouseLeave(Sender: TObject);
+    procedure Image3MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image2MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image2MouseEnter(Sender: TObject);
+    procedure Image2MouseLeave(Sender: TObject);
+    procedure Image2MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image2Click(Sender: TObject);
+    procedure Image1Click(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure Image3Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Frm_Marcacao_1_Aluno: TFrm_Marcacao_1_Aluno;
+
+implementation
+
+{$R *.fmx}
+
+uses Unit_Cadastro_Eventos, Unit_Mensagens;
+
+procedure TFrm_Marcacao_1_Aluno.FormCloseQuery(Sender: TObject;
+  var CanClose: Boolean);
+begin
+  if Mensagens.Fechar_Formulario('Cadastro Marcação 1 Aluno') = False then
+  begin
+    CanClose := False;
+  end
+  else
+  begin
+    Frm_Cadastro_Eventos.Show;
+  end;
+end;
+
+procedure TFrm_Marcacao_1_Aluno.Image1Click(Sender: TObject);
+begin
+  ComboBox2.ItemIndex := -1;
+  ComboBox4.ItemIndex := -1;
+  ComboBox3.ItemIndex := -1;
+  ComboBox2.SetFocus;
+end;
+
+procedure TFrm_Marcacao_1_Aluno.Image1MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect1.Opacity := 1;
+end;
+
+procedure TFrm_Marcacao_1_Aluno.Image1MouseEnter(Sender: TObject);
+begin
+  ShadowEffect1.Enabled := True;
+end;
+
+procedure TFrm_Marcacao_1_Aluno.Image1MouseLeave(Sender: TObject);
+begin
+  ShadowEffect1.Enabled := False;
+end;
+
+procedure TFrm_Marcacao_1_Aluno.Image1MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect1.Opacity := 0.6;
+end;
+
+procedure TFrm_Marcacao_1_Aluno.Image2Click(Sender: TObject);
+begin
+  if Mensagens.Fechar_Formulario('Cadastro Marcação 1 Aluno') = True then
+  begin
+    Frm_Marcacao_1_Aluno.Hide;
+    Frm_Cadastro_Eventos.Show;
+  end;
+end;
+
+procedure TFrm_Marcacao_1_Aluno.Image2MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect2.Opacity := 1;
+end;
+
+procedure TFrm_Marcacao_1_Aluno.Image2MouseEnter(Sender: TObject);
+begin
+  ShadowEffect2.Enabled := True;
+end;
+
+procedure TFrm_Marcacao_1_Aluno.Image2MouseLeave(Sender: TObject);
+begin
+  ShadowEffect2.Enabled := False;
+end;
+
+procedure TFrm_Marcacao_1_Aluno.Image2MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect2.Opacity := 0.4;
+end;
+
+procedure TFrm_Marcacao_1_Aluno.Image3Click(Sender: TObject);
+begin
+  if (ComboBox2.ItemIndex = -1) or (ComboBox3.ItemIndex = -1) or
+    (ComboBox4.ItemIndex = -1) then
+  begin
+    Mensagens.Erro_Campos_Obrigatorios_Sem_Preenchimento;
+    ComboBox2.SetFocus;
+  end
+  else
+  begin
+    // código cadastrar e mensagem de aviso se cadastrou
+  end;
+end;
+
+procedure TFrm_Marcacao_1_Aluno.Image3MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect3.Opacity := 1;;
+end;
+
+procedure TFrm_Marcacao_1_Aluno.Image3MouseEnter(Sender: TObject);
+begin
+  ShadowEffect3.Enabled := True;
+end;
+
+procedure TFrm_Marcacao_1_Aluno.Image3MouseLeave(Sender: TObject);
+begin
+  ShadowEffect3.Enabled := False;
+end;
+
+procedure TFrm_Marcacao_1_Aluno.Image3MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect3.Opacity := 0.4;
+end;
+
+end.

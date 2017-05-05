@@ -1,0 +1,62 @@
+program SisEtec;
+
+uses
+  System.StartUpCopy,
+  FMX.Forms,
+  Unit_Agenda in 'Unit_Agenda.pas' {Frm_Agenda},
+  Unit_Arquivos in 'Unit_Arquivos.pas' {Frm_Arquivos},
+  Unit_Cadastro_Administrador in 'Unit_Cadastro_Administrador.pas' {Frm_Cadastro_Administrador},
+  Unit_Cadastro_Coordenador in 'Unit_Cadastro_Coordenador.pas' {Frm_Cadastro_Coordenador},
+  Unit_Cadastro_Curso in 'Unit_Cadastro_Curso.pas' {FRM_Cadastro_Curso},
+  Unit_Cadastro_Disciplina in 'Unit_Cadastro_Disciplina.pas' {Frm_Cadastro_Disciplina},
+  Unit_Cadastro_Eventos in 'Unit_Cadastro_Eventos.pas' {Frm_Cadastro_Eventos},
+  Unit_Cadastro_Professor in 'Unit_Cadastro_Professor.pas' {FRM_Cadastro_Professor},
+  Unit_Cadastro_Turmas in 'Unit_Cadastro_Turmas.pas' {FRM_Cadastro_Turma},
+  Unit_Central_Transferencia in 'Unit_Central_Transferencia.pas' {FRM_Central_Transferencia},
+  Unit_Controle in 'Unit_Controle.pas' {Centro_Controle},
+  Unit_Login in 'Unit_Login.pas' {FRM_Login},
+  Unit_Marcacao_1_Aluno in 'Unit_Marcacao_1_Aluno.pas' {Frm_Marcacao_1_Aluno},
+  Unit_Marcacao_N_Alunos in 'Unit_Marcacao_N_Alunos.pas' {Frm_Marcacao_N_Alunos},
+  Unit_Marcacao_N_Alunos_N_Turmas in 'Unit_Marcacao_N_Alunos_N_Turmas.pas' {Frm_Marcacao_N_Alunos_N_Turmas},
+  Unit_Marcacao_N_Alunos_N_Turmas_N_Cursos in 'Unit_Marcacao_N_Alunos_N_Turmas_N_Cursos.pas' {Frm_Marcacao_N_Alunos_N_Turmas_N_Cursos},
+  Unit_Marcacao_N_Cursos in 'Unit_Marcacao_N_Cursos.pas' {Frm_Marcacao_N_Cursos},
+  Unit_Marcacao_N_Turmas in 'Unit_Marcacao_N_Turmas.pas' {Frm_Marcacao_N_Turmas},
+  Unit_Mensagens in 'Unit_Mensagens.pas' {Mensagens},
+  Unit_Principal in 'Unit_Principal.pas' {FRM_Principal},
+  Unit_Splash in 'Unit_Splash.pas' {FRM_Splash},
+  UnitAluno in 'UnitAluno.pas' {FRMAluno},
+  Unit_Pesquisa in 'Unit_Pesquisa.pas' {FRM_Pesquisa},
+  Unit_Resultado_Pesquisa in 'Unit_Resultado_Pesquisa.pas' {FRM_Resultado_Pesquisa},
+  Unit_Configuracoes in 'Unit_Configuracoes.pas' {FRM_Configuracoes};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TFRM_Splash, FRM_Splash);
+  Application.CreateForm(TFrm_Agenda, Frm_Agenda);
+  Application.CreateForm(TFrm_Arquivos, Frm_Arquivos);
+  Application.CreateForm(TFrm_Cadastro_Administrador, Frm_Cadastro_Administrador);
+  Application.CreateForm(TFrm_Cadastro_Coordenador, Frm_Cadastro_Coordenador);
+  Application.CreateForm(TFRM_Cadastro_Curso, FRM_Cadastro_Curso);
+  Application.CreateForm(TFrm_Cadastro_Disciplina, Frm_Cadastro_Disciplina);
+  Application.CreateForm(TFrm_Cadastro_Eventos, Frm_Cadastro_Eventos);
+  Application.CreateForm(TFRM_Cadastro_Professor, FRM_Cadastro_Professor);
+  Application.CreateForm(TFRM_Cadastro_Turma, FRM_Cadastro_Turma);
+  Application.CreateForm(TFRM_Central_Transferencia, FRM_Central_Transferencia);
+  Application.CreateForm(TCentro_Controle, Centro_Controle);
+  Application.CreateForm(TFRM_Login, FRM_Login);
+  Application.CreateForm(TFrm_Marcacao_1_Aluno, Frm_Marcacao_1_Aluno);
+  Application.CreateForm(TFrm_Marcacao_N_Alunos, Frm_Marcacao_N_Alunos);
+  Application.CreateForm(TFrm_Marcacao_N_Alunos_N_Turmas, Frm_Marcacao_N_Alunos_N_Turmas);
+  Application.CreateForm(TFrm_Marcacao_N_Alunos_N_Turmas_N_Cursos, Frm_Marcacao_N_Alunos_N_Turmas_N_Cursos);
+  Application.CreateForm(TFrm_Marcacao_N_Cursos, Frm_Marcacao_N_Cursos);
+  Application.CreateForm(TFrm_Marcacao_N_Turmas, Frm_Marcacao_N_Turmas);
+  Application.CreateForm(TMensagens, Mensagens);
+  Application.CreateForm(TFRM_Principal, FRM_Principal);
+  Application.CreateForm(TFRMAluno, FRMAluno);
+  Application.CreateForm(TFRM_Pesquisa, FRM_Pesquisa);
+  Application.CreateForm(TFRM_Resultado_Pesquisa, FRM_Resultado_Pesquisa);
+  Application.CreateForm(TFRM_Configuracoes, FRM_Configuracoes);
+  Application.Run;
+end.

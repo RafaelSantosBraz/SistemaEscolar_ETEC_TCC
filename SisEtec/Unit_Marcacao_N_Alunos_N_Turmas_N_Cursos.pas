@@ -1,0 +1,641 @@
+unit Unit_Marcacao_N_Alunos_N_Turmas_N_Cursos;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes,
+  System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Effects,
+  FMX.Objects, FMX.Layouts, FMX.ListBox, FMX.StdCtrls,
+  FMX.Controls.Presentation;
+
+type
+  TFrm_Marcacao_N_Alunos_N_Turmas_N_Cursos = class(TForm)
+    GroupBox1: TGroupBox;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    ListBox1: TListBox;
+    ListBox2: TListBox;
+    Timer1: TTimer;
+    GroupBox2: TGroupBox;
+    ScaledLayout6: TScaledLayout;
+    Image3: TImage;
+    Label6: TLabel;
+    ShadowEffect3: TShadowEffect;
+    ScaledLayout1: TScaledLayout;
+    Image1: TImage;
+    Label1: TLabel;
+    ShadowEffect1: TShadowEffect;
+    ScaledLayout2: TScaledLayout;
+    Image2: TImage;
+    Label2: TLabel;
+    ShadowEffect2: TShadowEffect;
+    ListBox3: TListBox;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    procedure Timer1Timer(Sender: TObject);
+    procedure Image2MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image2MouseEnter(Sender: TObject);
+    procedure Image2MouseLeave(Sender: TObject);
+    procedure Image2MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image1MouseEnter(Sender: TObject);
+    procedure Image1MouseLeave(Sender: TObject);
+    procedure Image1MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image3MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image3MouseEnter(Sender: TObject);
+    procedure Image3MouseLeave(Sender: TObject);
+    procedure Image3MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image2Click(Sender: TObject);
+    procedure Image1Click(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure Image3Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure ListBox1Change(Sender: TObject);
+    procedure ListBox2Change(Sender: TObject);
+    procedure ListBox3Change(Sender: TObject);
+    procedure ListBox1ChangeCheck(Sender: TObject);
+    procedure ListBox2ChangeCheck(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Frm_Marcacao_N_Alunos_N_Turmas_N_Cursos
+    : TFrm_Marcacao_N_Alunos_N_Turmas_N_Cursos;
+  Quantidade_Cursos, Quantidade_Turmas, Quantidade_Alunos, Erro_2: Integer;
+  Codigo_Curso, Codigo_Turma, Codigo_Aluno, Aluno_Codigo_Aluno,
+    Turma_Codigo_Turma, Nome_Usuario_Autor: String;
+
+implementation
+
+{$R *.fmx}
+
+uses Unit_Cadastro_Eventos, Unit_Mensagens, Unit_Agenda, Unit_Controle,
+  Unit_Principal, Unit_Arquivos, Unit_Destinatario_Arquivos,
+  Unit_Central_Transferencia;
+
+procedure TFrm_Marcacao_N_Alunos_N_Turmas_N_Cursos.FormCloseQuery
+  (Sender: TObject; var CanClose: Boolean);
+begin
+  if Mensagens.Fechar_Formulario('Cadastro de ' +
+    Frm_Marcacao_N_Alunos_N_Turmas_N_Cursos.Caption) = False then
+  begin
+    CanClose := False;
+  end
+  else
+  begin
+    Timer1.Enabled := False;
+    Frm_Cadastro_Eventos.Show;
+  end;
+end;
+
+procedure TFrm_Marcacao_N_Alunos_N_Turmas_N_Cursos.FormShow(Sender: TObject);
+var
+  Cont, Quantidade_Cursos: Integer;
+  Nome_Curso, Turma, Nome_Aluno, Nome_Cursos: String;
+begin
+  Nome_Usuario_Autor := Unit_Cadastro_Eventos.Nome_Usuario_Autor;
+  Timer1.Enabled := true;
+  ListBox1.Clear;
+  ListBox2.Clear;
+  ListBox3.Clear;
+  try
+    Centro_Controle.FDQuery1.SQL.Clear;
+    Centro_Controle.FDQuery1.SQL.Append
+      ('select Nome_Curso from Curso order by Cod_Curso');
+    Centro_Controle.Executar_Query_Aberta('Curso');
+    Centro_Controle.FDQuery1.Prior;
+    if (Centro_Controle.FDQuery1.FieldByName('Nome_Curso').Value <> Null) then
+    begin
+      ListBox1.Items.Append(Centro_Controle.FDQuery1.FieldByName
+        ('Nome_Curso').Value);
+      for Cont := 1 to (Centro_Controle.FDQuery1.RecordCount - 1) do
+      begin
+        Centro_Controle.FDQuery1.Next;
+        ListBox1.Items.Append(Centro_Controle.FDQuery1.FieldByName
+          ('Nome_Curso').Value);
+      end;
+    end
+    else
+    begin
+      Mensagens.Gerar_Mensagem_Simples('Nenhum Curso encontrado.');
+    end;
+  except
+    Mensagens.Erro_Componentes_Iniciais_NAO_Carregados;
+    Frm_Marcacao_N_Alunos_N_Turmas_N_Cursos.Hide;
+    FRM_Principal.Show;
+  end;
+end;
+
+procedure TFrm_Marcacao_N_Alunos_N_Turmas_N_Cursos.Image1Click(Sender: TObject);
+begin
+  ListBox1.Clear;
+  ListBox2.Clear;
+  ListBox3.Clear;
+  ListBox1.SetFocus;
+  Frm_Marcacao_N_Alunos_N_Turmas_N_Cursos.FormShow
+    (Frm_Marcacao_N_Alunos_N_Turmas_N_Cursos);
+  Label7.Text := '0 Cursos Selecionados';
+  Quantidade_Cursos := 0;
+  Label9.Text := '0 Alunos Selecionados';
+  Label8.Text := '0 Turmas Selecionadas';
+end;
+
+procedure TFrm_Marcacao_N_Alunos_N_Turmas_N_Cursos.Image1MouseDown
+  (Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect1.Opacity := 1;
+end;
+
+procedure TFrm_Marcacao_N_Alunos_N_Turmas_N_Cursos.Image1MouseEnter
+  (Sender: TObject);
+begin
+  ShadowEffect1.Enabled := true;
+end;
+
+procedure TFrm_Marcacao_N_Alunos_N_Turmas_N_Cursos.Image1MouseLeave
+  (Sender: TObject);
+begin
+  ShadowEffect1.Enabled := False;
+end;
+
+procedure TFrm_Marcacao_N_Alunos_N_Turmas_N_Cursos.Image1MouseUp
+  (Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect1.Opacity := 0.6;
+end;
+
+procedure TFrm_Marcacao_N_Alunos_N_Turmas_N_Cursos.Image2Click(Sender: TObject);
+begin
+  if Mensagens.Fechar_Formulario('Cadastro de ' +
+    Frm_Marcacao_N_Alunos_N_Turmas_N_Cursos.Caption) = true then
+  begin
+    Timer1.Enabled := False;
+
+    if (Unit_Arquivos.Arquivos <> 'sim') then
+    begin
+      Frm_Cadastro_Eventos.Show;
+      Frm_Marcacao_N_Alunos_N_Turmas_N_Cursos.Hide;
+    end
+    else
+    begin
+      FRM_Destinatario_Arquivos.Show;
+      Frm_Marcacao_N_Alunos_N_Turmas_N_Cursos.Hide;
+    end;
+  end;
+end;
+
+procedure TFrm_Marcacao_N_Alunos_N_Turmas_N_Cursos.Image2MouseDown
+  (Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect2.Opacity := 1;
+end;
+
+procedure TFrm_Marcacao_N_Alunos_N_Turmas_N_Cursos.Image2MouseEnter
+  (Sender: TObject);
+begin
+  ShadowEffect2.Enabled := true;
+end;
+
+procedure TFrm_Marcacao_N_Alunos_N_Turmas_N_Cursos.Image2MouseLeave
+  (Sender: TObject);
+begin
+  ShadowEffect2.Enabled := False;
+end;
+
+procedure TFrm_Marcacao_N_Alunos_N_Turmas_N_Cursos.Image2MouseUp
+  (Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect2.Opacity := 0.6;
+end;
+
+procedure TFrm_Marcacao_N_Alunos_N_Turmas_N_Cursos.Image3Click(Sender: TObject);
+var
+  Cont, Cont2: Integer;
+  Agenda_Cod_Agenda, Evento_Cod_Evento, Cod_Evento, Cod_Agenda, Notificacao,
+    Turmas_Cod_Turma, Nome_Curso, Curso_Cod_Curso, Nome_Turma: String;
+begin
+  if (ListBox1.ItemIndex = -1) or (ListBox2.ItemIndex = -1) or
+    (ListBox3.ItemIndex = -1) then
+  begin
+    Mensagens.Erro_Campos_Obrigatorios_Sem_Preenchimento;
+    ListBox1.SetFocus;
+  end
+  else
+  begin
+    try
+      // Pega os Alunos
+      for Cont2 := 0 to ListBox3.Items.Count - 1 do
+      begin
+        if ListBox3.ItemByIndex(Cont2).IsChecked = true then
+        begin
+          Frm_Cadastro_Eventos.Alunos := ListBox3.ItemByIndex(Cont2).Text + ', '
+            + Frm_Cadastro_Eventos.Alunos;
+          // Pega o Agenda_Cod_Agenda do Aluno
+          Centro_Controle.FDQuery1.SQL.Clear;
+          Centro_Controle.FDQuery1.SQL.Append
+            ('select Agenda_Cod_Agenda from Aluno where Nome_Aluno like "' +
+            ListBox3.ItemByIndex(Cont2).Text + '"');
+          Centro_Controle.Executar_Query_Aberta('Aluno');
+          Centro_Controle.FDQuery1.Last;
+          Agenda_Cod_Agenda := Centro_Controle.FDQuery1.FieldByName
+            ('Agenda_Cod_Agenda').Value;
+          // Pega o Codigo do Aluno
+          Centro_Controle.FDQuery1.SQL.Clear;
+          Centro_Controle.FDQuery1.SQL.Append
+            ('select Cod_Aluno from Aluno where Nome_Aluno like "' +
+            ListBox3.ItemByIndex(Cont2).Text + '"');
+          Centro_Controle.Executar_Query_Aberta('Aluno');
+          Centro_Controle.FDQuery1.Last;
+          Codigo_Aluno := Centro_Controle.FDQuery1.FieldByName
+            ('Cod_Aluno').Value;
+          // Pega Turmas_Cod_Turma
+          Centro_Controle.FDQuery1.SQL.Clear;
+          Centro_Controle.FDQuery1.SQL.Append
+            ('select Turmas_Cod_Turma from Matricula where Aluno_Cod_Aluno = ' +
+            Codigo_Aluno);
+          Centro_Controle.Executar_Query_Aberta('Matricula');
+          Centro_Controle.FDQuery1.Last;
+          Turmas_Cod_Turma := Centro_Controle.FDQuery1.FieldByName
+            ('Turmas_Cod_Turma').Value;
+          // Pega o Nome da Turma
+          Centro_Controle.FDQuery1.SQL.Clear;
+          Centro_Controle.FDQuery1.SQL.Append
+            ('select Nome_Turma from Turmas where Cod_Turma = ' +
+            Turmas_Cod_Turma);
+          Centro_Controle.Executar_Query_Aberta('Turmas');
+          Centro_Controle.FDQuery1.Last;
+          { Nome_Turma := Centro_Controle.FDQuery1.FieldByName
+            ('Nome_Turma').Value; }
+          Frm_Cadastro_Eventos.Turmas := Centro_Controle.FDQuery1.FieldByName
+            ('Nome_Turma').Value + ', ' + Frm_Cadastro_Eventos.Turmas;
+          // Pega o Cursos_Cod_Curso
+          Centro_Controle.FDQuery1.SQL.Clear;
+          Centro_Controle.FDQuery1.SQL.Append
+            ('select Curso_Cod_Curso from Turmas where Cod_Turma = ' +
+            Turmas_Cod_Turma);
+          Centro_Controle.Executar_Query_Aberta('Turmas');
+          Centro_Controle.FDQuery1.Last;
+          Curso_Cod_Curso := Centro_Controle.FDQuery1.FieldByName
+            ('Curso_Cod_Curso').Value;
+          // Pega Nome Curso
+          Centro_Controle.FDQuery1.SQL.Clear;
+          Centro_Controle.FDQuery1.SQL.Append
+            ('select Nome_Curso from Curso where Cod_Curso = ' +
+            Curso_Cod_Curso);
+          Centro_Controle.Executar_Query_Aberta('Curso');
+          Centro_Controle.FDQuery1.Last;
+          { Nome_Curso := Centro_Controle.FDQuery1.FieldByName
+            ('Nome_Curso').Value; }
+          Frm_Cadastro_Eventos.Cursos := Centro_Controle.FDQuery1.FieldByName
+            ('Nome_Curso').Value + ', ' + Frm_Cadastro_Eventos.Cursos;
+          { Pega o código do Aluno }
+          Centro_Controle.FDQuery1.SQL.Clear;
+          Centro_Controle.FDQuery1.SQL.Append
+            ('select Cod_Aluno from Aluno where Nome_Aluno like "' +
+            ListBox3.ItemByIndex(Cont2).Text + '"');
+          Centro_Controle.Executar_Query_Aberta('Aluno');
+          Centro_Controle.FDQuery1.Prior;
+          Unit_Arquivos.Codigo_Proprietario_Arquivo :=
+            Centro_Controle.FDQuery1.FieldByName('Cod_Aluno').Value;
+          Unit_Arquivos.Tipo_Proprietario_Arquivo := '1';
+          if (Unit_Arquivos.Arquivos <> 'sim') then
+          begin
+            // Evento
+            if (Exclui_ou_Edita = 'sim') then
+            begin
+              Frm_Cadastro_Eventos.Edita_Evento;
+            end;
+            Centro_Controle.Cadastrar_Dados_Evento
+              (Unit_Cadastro_Eventos.Descricao_Evento,
+              Unit_Cadastro_Eventos.Assunto_Evento,
+              Unit_Cadastro_Eventos.Data_Marcacao_Evento,
+              Unit_Cadastro_Eventos.Data_Termino_Evento,
+              Unit_Cadastro_Eventos.Hora_Inicio_Evento,
+              Unit_Cadastro_Eventos.Hora_Termino_Evento,
+              Unit_Cadastro_Eventos.Nome_Usuario_Autor);
+            Centro_Controle.FDQuery1.SQL.Clear;
+            Centro_Controle.FDQuery1.SQL.Append
+              ('select Cod_Evento from Eventos order by Cod_Evento');
+            Centro_Controle.Executar_Query_Aberta('Eventoa');
+            Centro_Controle.FDQuery1.Last;
+            Cod_Evento := Centro_Controle.FDQuery1.FieldByName
+              ('Cod_Evento').Value;
+            // Cronograma
+            Evento_Cod_Evento := Cod_Evento;
+            // Cadastra em cronograma
+            Notificacao := 'True';
+            Centro_Controle.Cadastrar_Cronograma(Agenda_Cod_Agenda,
+              Evento_Cod_Evento, Notificacao);
+            // Mensagem de Marcação
+          end
+          else
+          begin
+            FRM_Destinatario_Arquivos.Cadastra_Arquivos;
+          end;
+        end;
+      end;
+      if (Unit_Arquivos.Arquivos <> 'sim') then
+      begin
+        ShowMessage('Aluno(s): ' + Frm_Cadastro_Eventos.Alunos +
+          ' foi(ram) marcado(s) no Evento ' + Frm_Cadastro_Eventos.Edit1.Text +
+          ' que ocorrerá em ' + Unit_Agenda.Data_Marcacao_Evento + '.');
+        Frm_Agenda.Show;
+        Frm_Marcacao_N_Alunos_N_Turmas_N_Cursos.Hide;
+      end
+      else
+      begin
+        Frm_Arquivos.Selects;
+        FRM_Destinatario_Arquivos.Tipo_Proprietario_Proc;
+        FRM_Destinatario_Arquivos.Cadastra_Arquivos;
+        try
+          Unit_Central_Transferencia.Mensagem := 'Aluno(s): ' +
+            Frm_Cadastro_Eventos.Alunos +
+            ' recebeu(ram) com sucesso o Arquivo: ' +
+            Unit_Arquivos.Nome_Final_Arquivo + '.';
+          Centro_Controle.FDQuery1.SQL.Clear;
+          Centro_Controle.FDQuery1.SQL.Append
+            ('select Cod_Arquivo from Arquivos order by Cod_Arquivo');
+          Centro_Controle.Executar_Query_Aberta('Arquivos');
+          Centro_Controle.FDQuery1.Last;
+          FRM_central_Transferencia.Ativar_Central_Transferencia_ENVIAR_ARQUIVO
+            (Frm_Marcacao_N_Alunos_N_Turmas_N_Cursos,
+            Centro_Controle.FDQuery1.FieldByName('Cod_Arquivo').Value,
+            Unit_Arquivos.Caminho_Arquivo, Unit_Arquivos.Nome_Arquivo,
+            Frm_Arquivos);
+          Unit_Arquivos.Arquivos := 'não';
+        except
+          Mensagens.Gerar_Mensagem_Simples
+            ('Erro ao Enviar o Arquivo. Tente novamente mais tarde.');
+        end;
+      end;
+    except
+      if (Unit_Arquivos.Arquivos <> 'sim') then
+      begin
+        Mensagens.Erro_Cadastro('Evento');
+        Frm_Cadastro_Eventos.Show;
+      end
+      else
+      begin
+        Unit_Arquivos.Arquivos := 'não';
+        Mensagens.Erro_Envio_Arquivo;
+        Frm_Cadastro_Eventos.Show;
+        Frm_Marcacao_N_Alunos_N_Turmas_N_Cursos.Hide;
+      end;
+    end;
+  end;
+end;
+
+procedure TFrm_Marcacao_N_Alunos_N_Turmas_N_Cursos.Image3MouseDown
+  (Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect3.Opacity := 1;
+end;
+
+procedure TFrm_Marcacao_N_Alunos_N_Turmas_N_Cursos.Image3MouseEnter
+  (Sender: TObject);
+begin
+  ShadowEffect3.Enabled := true;
+end;
+
+procedure TFrm_Marcacao_N_Alunos_N_Turmas_N_Cursos.Image3MouseLeave
+  (Sender: TObject);
+begin
+  ShadowEffect3.Enabled := False;
+end;
+
+procedure TFrm_Marcacao_N_Alunos_N_Turmas_N_Cursos.Image3MouseUp
+  (Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect3.Opacity := 0.6;
+end;
+
+procedure TFrm_Marcacao_N_Alunos_N_Turmas_N_Cursos.ListBox1Change
+  (Sender: TObject);
+var
+  Cont, Cont2: Integer;
+begin
+  ListBox2.Clear;
+  for Cont := 0 to ListBox1.Items.Count - 1 do
+  begin
+    if ListBox1.ItemByIndex(Cont).IsChecked = true then
+    begin
+      try
+        Quantidade_Cursos := Quantidade_Cursos + 1;
+        // Label7.Text := IntToStr(Quantidade_Cursos) + ' Cursos Selecionados';
+        Centro_Controle.FDQuery1.SQL.Clear;
+        Centro_Controle.FDQuery1.SQL.Append
+          ('select Cod_Curso from Curso where Nome_Curso like "' +
+          ListBox1.ItemByIndex(Cont).Text + '"');
+        Centro_Controle.Executar_Query_Aberta('Curso');
+        Centro_Controle.FDQuery1.Last;
+        Codigo_Curso := Centro_Controle.FDQuery1.FieldByName('Cod_Curso').Value;
+      except
+        Mensagens.Erro_Componentes_Iniciais_NAO_Carregados;
+        Frm_Marcacao_N_Alunos_N_Turmas_N_Cursos.Hide;
+        FRM_Principal.Show;
+      end;
+      try
+        Centro_Controle.FDQuery1.SQL.Clear;
+        Centro_Controle.FDQuery1.SQL.Append
+          ('select Nome_Turma from Turmas where Curso_Cod_Curso ' + '= ' +
+          Codigo_Curso);
+        Centro_Controle.Executar_Query_Aberta('Turmas');
+        Centro_Controle.FDQuery1.Prior;
+        if (Centro_Controle.FDQuery1.FieldByName('Nome_Turma').Value <> Null)
+        then
+        begin
+          ListBox2.Items.Append(Centro_Controle.FDQuery1.FieldByName
+            ('Nome_Turma').Value);
+          for Cont2 := 1 to (Centro_Controle.FDQuery1.RecordCount - 1) do
+          begin
+            Centro_Controle.FDQuery1.Next;
+            ListBox2.Items.Append(Centro_Controle.FDQuery1.FieldByName
+              ('Nome_Turma').Value);
+          end;
+        end
+        else
+        begin
+          Mensagens.Gerar_Mensagem_Simples('Nenhuma Turma encontrado no Curso '
+            + ListBox1.ItemByIndex(Cont).Text + '.');
+        end;
+      except
+        Mensagens.Erro_Componentes_Iniciais_NAO_Carregados;
+        Frm_Marcacao_N_Alunos_N_Turmas_N_Cursos.Hide;
+        FRM_Principal.Show;
+      end;
+      ListBox3.Clear;
+      Quantidade_Alunos := 0;
+      Label9.Text := '0 Alunos Selecionados';
+      Quantidade_Turmas := 0;
+      Label8.Text := '0 Turmas Selecionadas';
+    end
+    { else
+      begin
+      ListBox2.Clear;
+      // ListBox1Change(ListBox1); }
+  end;
+end;
+
+procedure TFrm_Marcacao_N_Alunos_N_Turmas_N_Cursos.ListBox1ChangeCheck
+  (Sender: TObject);
+begin
+  ListBox2.Clear;
+  ListBox1Change(ListBox1);
+  ListBox2Change(ListBox2);
+end;
+
+procedure TFrm_Marcacao_N_Alunos_N_Turmas_N_Cursos.ListBox2Change
+  (Sender: TObject);
+var
+  Cont, Cont2, Erro: Integer;
+begin
+  ListBox3.Clear;
+  for Cont := 0 to ListBox2.Items.Count - 1 do
+  begin
+    if ListBox2.ItemByIndex(Cont).IsChecked = true then
+    begin
+      try
+        Quantidade_Turmas := Quantidade_Turmas + 1;
+        // Label8.Text := IntToStr(Quantidade_Turmas) + ' Turmas Selecionadas';
+        Centro_Controle.FDQuery1.SQL.Clear;
+        Centro_Controle.FDQuery1.SQL.Append
+          ('select Cod_Turma from Turmas where Nome_Turma like "' +
+          ListBox2.ItemByIndex(Cont).Text + '"');
+        Centro_Controle.Executar_Query_Aberta('Turmas');
+        Centro_Controle.FDQuery1.Last;
+        Codigo_Turma := Centro_Controle.FDQuery1.FieldByName('Cod_Turma').Value;
+      except
+        ShowMessage('Erro ao Buscar pela Turma Selecionada');
+        Frm_Marcacao_N_Alunos_N_Turmas_N_Cursos.Hide;
+        FRM_Principal.Show;
+      end;
+      try
+        // Matrícula
+        Centro_Controle.FDQuery1.SQL.Clear;
+        Centro_Controle.FDQuery1.SQL.Append
+          ('select Nome_Aluno from Aluno inner join Matricula on Aluno_Cod_Aluno'
+          + ' = Cod_Aluno and Turmas_Cod_Turma = ' + Codigo_Turma);
+        Centro_Controle.Executar_Query_Aberta('Aluno');
+        Centro_Controle.FDQuery1.Prior;
+        if (Centro_Controle.FDQuery1.FieldByName('Nome_Aluno').Value <> Null)
+        then
+        begin
+          { Codigo_Aluno := Centro_Controle.FDQuery1.FieldByName
+            ('Aluno_Cod_Aluno').Value;
+            // ShowMessage(Codigo_Aluno);
+            // Aluno
+            Centro_Controle.FDQuery1.SQL.Clear;
+            Centro_Controle.FDQuery1.SQL.Append
+            ('select Nome_Aluno from Aluno where Cod_Aluno ' + '= ' +
+            Codigo_Aluno);
+            Centro_Controle.Executar_Query_Aberta('Aluno'); }
+          ListBox3.Items.Append(Centro_Controle.FDQuery1.FieldByName
+            ('Nome_Aluno').Value);
+          for Cont2 := 1 to (Centro_Controle.FDQuery1.RecordCount - 1) do
+          begin
+            Centro_Controle.FDQuery1.Next;
+            ListBox3.Items.Append(Centro_Controle.FDQuery1.FieldByName
+              ('Nome_Aluno').Value);
+          end;
+        end
+        else
+        begin
+          Mensagens.Gerar_Mensagem_Simples('Nenhum Aluno encontrado na Turma' +
+            ListBox2.ItemByIndex(Cont).Text + '.');
+        end;
+      except
+        Mensagens.Erro_Componentes_Iniciais_NAO_Carregados;
+        Frm_Marcacao_N_Alunos_N_Turmas_N_Cursos.Hide;
+        FRM_Principal.Show;
+      end;
+    end;
+  end;
+end;
+
+procedure TFrm_Marcacao_N_Alunos_N_Turmas_N_Cursos.ListBox2ChangeCheck
+  (Sender: TObject);
+begin
+  { if (Erro_2 = 1) then
+    begin
+    Erro_2 := 1;
+    end; }
+  ListBox3.Clear;
+  ListBox2Change(ListBox2);
+  // Erro_2 := 0
+end;
+
+procedure TFrm_Marcacao_N_Alunos_N_Turmas_N_Cursos.ListBox3Change
+  (Sender: TObject);
+var
+  Cont: Integer;
+begin
+  for Cont := 0 to ListBox3.Items.Count - 1 do
+  begin
+    if ListBox3.ItemByIndex(Cont).IsChecked = true then
+    begin
+      // Quantidade_Alunos := Quantidade_Alunos + 1;
+      Label9.Text := IntToStr(Quantidade_Alunos) + ' Alunos Selecionados';
+    end;
+  end;
+end;
+
+procedure TFrm_Marcacao_N_Alunos_N_Turmas_N_Cursos.Timer1Timer(Sender: TObject);
+var
+  Cont: Integer;
+begin
+  for Cont := 0 to ListBox1.Items.Count - 1 do
+  begin
+    if ListBox1.ItemByIndex(Cont).IsChecked = true then
+    begin
+      ListBox1.ItemByIndex(Cont).ItemData.Accessory :=
+        TListBoxItemData.TAccessory.aCheckmark;
+    end
+    else
+    begin
+      ListBox1.ItemByIndex(Cont).ItemData.Accessory :=
+        TListBoxItemData.TAccessory.aNone;
+    end;
+  end;
+
+  for Cont := 0 to ListBox2.Items.Count - 1 do
+  begin
+    if ListBox2.ItemByIndex(Cont).IsChecked = true then
+    begin
+      ListBox2.ItemByIndex(Cont).ItemData.Accessory :=
+        TListBoxItemData.TAccessory.aCheckmark;
+    end
+    else
+    begin
+      ListBox2.ItemByIndex(Cont).ItemData.Accessory :=
+        TListBoxItemData.TAccessory.aNone;
+    end;
+  end;
+
+  for Cont := 0 to ListBox3.Items.Count - 1 do
+  begin
+    if ListBox3.ItemByIndex(Cont).IsChecked = true then
+    begin
+      ListBox3.ItemByIndex(Cont).ItemData.Accessory :=
+        TListBoxItemData.TAccessory.aCheckmark;
+    end
+    else
+    begin
+      ListBox3.ItemByIndex(Cont).ItemData.Accessory :=
+        TListBoxItemData.TAccessory.aNone;
+    end;
+  end;
+end;
+
+end.

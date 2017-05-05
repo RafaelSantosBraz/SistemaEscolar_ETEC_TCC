@@ -1,0 +1,624 @@
+unit Unit_Controle;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes,
+  System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, IdComponent,
+  IdBaseComponent, IdTCPConnection, IdTCPClient, IdExplicitTLSClientServerBase,
+  IdFTP, IdZLibCompressorBase, IdCompressorZLib, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf,
+  FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys,
+  FireDAC.Phys.MySQL, FireDAC.Phys.MySQLDef, Data.DB, FireDAC.Comp.Client,
+  IdCustomTransparentProxy, IdConnectThroughHttpProxy, IWAutherBase,
+  IWAutherList, Datasnap.DSAuth, IdHTTP, FireDAC.Stan.Param, FireDAC.DatS,
+  FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.FMXUI.Wait,
+  FireDAC.Comp.UI;
+
+type
+  TCentro_Controle = class(TForm)
+    StyleBook1: TStyleBook;
+    Timer1: TTimer;
+    IdFTP1: TIdFTP;
+    FDConnection1: TFDConnection;
+    Tabela_Administrador: TFDTable;
+    Tabela_Agenda: TFDTable;
+    Tabela_Aluno: TFDTable;
+    Tabela_Atividades: TFDTable;
+    Tabela_Avaliacoes: TFDTable;
+    Tabela_Avaliacoes_Realizadas: TFDTable;
+    Tabela_Coordenador: TFDTable;
+    Tabela_Cronograma: TFDTable;
+    Tabela_Curso: TFDTable;
+    Tabela_Disciplina: TFDTable;
+    Tabela_Disciplina_Por_Turmas: TFDTable;
+    Tabela_Disciplina_Professor: TFDTable;
+    Tabela_Matricula: TFDTable;
+    Tabela_Professor: TFDTable;
+    Tabela_Turmas: TFDTable;
+    FDGUIxWaitCursor1: TFDGUIxWaitCursor;
+    FDQuery1: TFDQuery;
+    Tabela_Administrador_S: TFDTable;
+    procedure Trocar_Stylebook;
+    procedure Preparar_Menus;
+    procedure Reset_Menus;
+    procedure Conectar_Servidor_FTP;
+    procedure IdFTP1Connected(Sender: TObject);
+    procedure Enviar_Arquivo(Caminho_Arquivo_Computador: String;
+      Caminho_Arquivo_Servidor: string; Nome_Arquivo: String);
+    procedure IdFTP1Work(ASender: TObject; AWorkMode: TWorkMode;
+      AWorkCount: Int64);
+    procedure IdFTP1WorkBegin(ASender: TObject; AWorkMode: TWorkMode;
+      AWorkCountMax: Int64);
+    procedure Timer1Timer(Sender: TObject);
+    procedure IdFTP1WorkEnd(ASender: TObject; AWorkMode: TWorkMode);
+    procedure Baixar_Arquivo(Caminho_Arquivo_Servidor: string;
+      Caminho_Arquivo_Computador: String; Nome_Arquivo: String);
+    procedure Conectar_Servidor_MySQL;
+    procedure Ativar_Tabelas;
+    function Fazer_Login(Nome_Tabela: String; Login: String;
+      Senha: String): boolean;
+    procedure Cadastrar_Dados_Administrador(Codigo_Agenda: String; Nome: String;
+      Login: String; Senha: String);
+    procedure Cadastrar_Dados_Agenda;
+    procedure Cadastrar_Dados_Aluno(Codigo_Agenda: String; Nome: String;
+      RA: String; RM: String; Login: String; Senha: String);
+    procedure Cadastrar_Dados_Atividade(Descricao: String; Assunto: String;
+      Data_Marcacao: String; Data_Prevista_Entrega: String;
+      Data_Termino: String);
+    procedure Cadastrar_Dados_Avaliacoes(Codigo_Professor: String; Data: String;
+      Materia: String; Modelo: String);
+    procedure Cadastrar_Avaliacao_Realizada(Codigo_Aluno: String;
+      Cod_Avaliacao: String; Nota: String);
+    procedure Cadastrar_Coordenador(Codigo_Agenda: String; Nome: String;
+      Login: String; Senha: String);
+    procedure Cadastrar_Cronograma(Codigo_Agenda: String;
+      Codigo_Atividade: String);
+    procedure Cadastrar_Curso(Codigo_Coordenador: String; Nome: String);
+    procedure Cadastrar_Disciplina(Nome: String);
+    procedure Cadastrar_Disciplinas_Professor(Codigo_Professor: String;
+      Codigo_Disciplina: String);
+    procedure Cadastrar_Disciplina_Turmas(Codigo_Turma: String;
+      Codigo_Disciplina: String);
+    procedure Cadastrar_Matricula(Codigo_Aluno: String; Codigo_Turma: String);
+    procedure Cadastrar_Turmas(Codigo_Curso: String; Nome: String);
+    procedure Cadastrar_Professor(Codigo_Agenda: String; Nome: String;
+      Login: String; Senha: String);
+    procedure Executar_Query(Erro_Nome: String; Tipo_Erro: Integer);
+    procedure Executar_Query_Aberta(Erro_Nome: String);
+  private
+    { Private declarations }
+
+  public
+    { Public declarations }
+  end;
+
+var
+  Centro_Controle: TCentro_Controle;
+  Tamanho_Arquivo, Tamanho_Transferido_Arquivo,
+    Tamanho_Transferido_Arquivo_Anterior, Tempo, Auxiliar_Tempo,
+    Tipo_Transferencia, Tipo_Usuario: Integer;
+  Nome_Arquivo_Servidor: String;
+
+implementation
+
+{$R *.fmx}
+
+uses Unit_Login, Unit_Principal, Unit_Cadastro_Coordenador,
+  Unit_Cadastro_Administrador, Unit_Arquivos, Unit_Cadastro_Professor,
+  UnitAluno, Unit_Central_Transferencia, Unit_Mensagens,
+  Unit_Cadastro_Curso, Unit_Cadastro_Disciplina, Unit_Cadastro_Turmas,
+  Unit_Agenda, Unit_Marcacao_1_Aluno, Unit_Marcacao_N_Alunos,
+  Unit_Marcacao_N_Alunos_N_Turmas, Unit_Marcacao_N_Alunos_N_Turmas_N_Cursos,
+  Unit_Marcacao_N_Cursos, Unit_Marcacao_N_Turmas, Unit_Cadastro_Eventos,
+  Unit_Pesquisa;
+
+procedure TCentro_Controle.Executar_Query(Erro_Nome: String;
+  Tipo_Erro: Integer);
+begin
+  try
+    FDQuery1.ExecSQL;
+  except
+    try
+      FDQuery1.ExecSQL;
+    except
+      if Tipo_Erro = 1 then
+      begin
+        Mensagens.Erro_Cadastro(Erro_Nome);
+      end;
+      if Tipo_Erro = 2 then
+      begin
+        Mensagens.Erro_Pesquisa(Erro_Nome);
+      end;
+    end;
+  end;
+end;
+
+procedure TCentro_Controle.Executar_Query_Aberta(Erro_Nome: String);
+begin
+  try
+    FDQuery1.Open();
+  except
+    try
+      FDQuery1.Open();
+    except
+      Mensagens.Erro_Pesquisa(Erro_Nome);
+    end;
+  end;
+end;
+
+procedure TCentro_Controle.Cadastrar_Dados_Administrador(Codigo_Agenda: String;
+  Nome: String; Login: String; Senha: String);
+begin
+  FDQuery1.SQL.Clear;
+  FDQuery1.SQL.Append
+    ('insert into administrador (Agenda_Cod_Agenda, Nome_Administrador, ' +
+    'Login_Administrador, Senha_Administrador) values ("' + Codigo_Agenda +
+    '", "' + Nome + '", "' + Login + '", "' + Senha + '")');
+  Executar_Query('Administrador', 1);
+end;
+
+procedure TCentro_Controle.Cadastrar_Dados_Agenda;
+begin
+  FDQuery1.SQL.Clear;
+  FDQuery1.SQL.Append('insert into agenda values ()');
+  Executar_Query('Agenda', 1);
+end;
+
+procedure TCentro_Controle.Cadastrar_Dados_Aluno(Codigo_Agenda: String;
+  Nome: String; RA: String; RM: String; Login: String; Senha: String);
+begin
+  FDQuery1.SQL.Clear;
+  FDQuery1.SQL.Append
+    ('insert into aluno (Agenda_Cod_Agenda, Nome_Aluno, RA_Aluno, RM_Aluno, ' +
+    'Login_Aluno, Senha_Aluno) values ("' + Codigo_Agenda + '", "' + Nome +
+    '", "' + RA + '", "' + RM + '", "' + Login + '", "' + Senha + '")');
+  Executar_Query('Aluno', 1);
+end;
+
+procedure TCentro_Controle.Cadastrar_Dados_Atividade(Descricao: String;
+  Assunto: String; Data_Marcacao: String; Data_Prevista_Entrega: String;
+  Data_Termino: String);
+begin
+  FDQuery1.SQL.Clear;
+  FDQuery1.SQL.Append
+    ('insert into atividades (Descricao_Atividade, Assunto_Atividade, ' +
+    'Data_Marcacao_Atividade, Data_Prevista_Entrga, Data_Termino_Atividade) ' +
+    'values ("' + Descricao + '", "' + Assunto +
+    '", :Data_Marcacao, :Data_Prevista, :Data_Termino)');
+  FDQuery1.ParamByName('Data_Marcacao').Value := StrToDate(Data_Marcacao);
+  FDQuery1.ParamByName('Data_Prevista').Value :=
+    StrToDate(Data_Prevista_Entrega);
+  FDQuery1.ParamByName('Data_Termino').Value := StrToDate(Data_Termino);
+  Executar_Query('Atividade', 1);
+end;
+
+procedure TCentro_Controle.Cadastrar_Dados_Avaliacoes(Codigo_Professor: String;
+  Data: String; Materia: String; Modelo: String);
+begin
+  FDQuery1.SQL.Clear;
+  FDQuery1.SQL.Append
+    ('insert into avaliacoes (Professor_Cod_Professor, Data_Avaliacao, ' +
+    'Materia_Avaliacao, Modelo_Avaliacao) ' + 'values ("' + Codigo_Professor +
+    '", :Data, "' + Materia + '", "' + Modelo + '")');
+  FDQuery1.ParamByName('Data').Value := StrToDate(Data);
+  Executar_Query('Avaliação', 1);
+end;
+
+procedure TCentro_Controle.Cadastrar_Avaliacao_Realizada(Codigo_Aluno: String;
+  Cod_Avaliacao: String; Nota: String);
+begin
+  FDQuery1.SQL.Clear;
+  FDQuery1.SQL.Append('insert into avaliacoes_realizadas (Aluno_Cod_Aluno, ' +
+    'Avaliacoes_Cod_Avaliacoes, Nota_Avaliacao)' + 'values("' + Codigo_Aluno +
+    '", "' + Cod_Avaliacao + '", "' + Nota + '")');
+  Executar_Query('Avaliação Realizada', 1);
+end;
+
+procedure TCentro_Controle.Cadastrar_Coordenador(Codigo_Agenda: String;
+  Nome: String; Login: String; Senha: String);
+begin
+  FDQuery1.SQL.Clear;
+  FDQuery1.SQL.Append('insert into coordenador (Agenda_Cod_Agenda, ' +
+    'Nome_Coordenador, Login_Coordenador, Senha_Coordenador)' + 'values("' +
+    Codigo_Agenda + '", "' + Nome + '", "' + Login + '", "' + Senha + '")');
+  Executar_Query('Coordenador', 1);
+end;
+
+procedure TCentro_Controle.Cadastrar_Cronograma(Codigo_Agenda: String;
+  Codigo_Atividade: String);
+begin
+  FDQuery1.SQL.Clear;
+  FDQuery1.SQL.Append('insert into cronograma (Agenda_Cod_Agenda, ' +
+    'Atividades_Cod_Atividade)' + 'values("' + Codigo_Agenda + '", "' +
+    Codigo_Atividade + '")');
+  Executar_Query('Cronograma', 1);
+end;
+
+procedure TCentro_Controle.Cadastrar_Curso(Codigo_Coordenador: String;
+  Nome: String);
+begin
+  FDQuery1.SQL.Clear;
+  FDQuery1.SQL.Append('insert into curso (Coordenador_Cod_Coordenador, ' +
+    'Nome_Curso)' + 'values("' + Codigo_Coordenador + '", "' + Nome + '")');
+  Executar_Query('Curso', 1);
+end;
+
+procedure TCentro_Controle.Cadastrar_Disciplina(Nome: String);
+begin
+  FDQuery1.SQL.Clear;
+  FDQuery1.SQL.Append('insert into disciplina (Nome_Disciplina)' + 'values("' +
+    Nome + '")');
+  Executar_Query('Disciplina', 1);
+end;
+
+procedure TCentro_Controle.Cadastrar_Disciplinas_Professor(Codigo_Professor
+  : String; Codigo_Disciplina: String);
+begin
+  FDQuery1.SQL.Clear;
+  FDQuery1.SQL.Append
+    ('insert into disciplinas_professor (Professor_Cod_Professor, ' +
+    'Disciplina_Cod_Disciplina)' + 'values("' + Codigo_Professor + '", "' +
+    Codigo_Disciplina + ' ")');
+  Executar_Query('Disciplinas Professor', 1);
+end;
+
+procedure TCentro_Controle.Cadastrar_Disciplina_Turmas(Codigo_Turma: String;
+  Codigo_Disciplina: String);
+begin
+  FDQuery1.SQL.Clear;
+  FDQuery1.SQL.Append
+    ('insert into disciplina_por_turmas (Disciplina_Cod_Disciplina, ' +
+    'Turmas_Cod_Turma)' + 'values("' + Codigo_Disciplina + '", "' +
+    Codigo_Turma + '")');
+  Executar_Query('Disciplinas Turma', 1);
+end;
+
+procedure TCentro_Controle.Cadastrar_Matricula(Codigo_Aluno: String;
+  Codigo_Turma: String);
+begin
+  FDQuery1.SQL.Clear;
+  FDQuery1.SQL.Append('insert into matricula (Aluno_Cod_Aluno, ' +
+    'Turmas_Cod_Turma)' + 'values("' + Codigo_Aluno + '", "' +
+    Codigo_Turma + '")');
+  Executar_Query('Matrícula', 1);
+end;
+
+procedure TCentro_Controle.Cadastrar_Professor(Codigo_Agenda: String;
+  Nome: String; Login: String; Senha: String);
+begin
+  FDQuery1.SQL.Clear;
+  FDQuery1.SQL.Append('insert into professor (Agenda_Cod_Agenda, ' +
+    'Nome_Professor, Login_Professor, Senha_Professor)' + 'values("' +
+    Codigo_Agenda + '", "' + Nome + '", "' + Login + '", "' + Senha + '")');
+  Executar_Query('Professor', 1);
+end;
+
+procedure TCentro_Controle.Cadastrar_Turmas(Codigo_Curso: String; Nome: String);
+begin
+  FDQuery1.SQL.Clear;
+  FDQuery1.SQL.Append('insert into turmas (Curso_Cod_Curso, ' + 'Nome_Turma)' +
+    'values("' + Codigo_Curso + '", "' + Nome + '")');
+  Executar_Query('Turma', 1);
+end;
+
+function TCentro_Controle.Fazer_Login(Nome_Tabela: String; Login: String;
+  Senha: String): boolean;
+begin
+  if Nome_Tabela = 'Administrador' then
+  begin
+    try
+      FDQuery1.SQL.Clear;
+      FDQuery1.SQL.Append
+        ('select Cod_Administrador from Administrador where Login_Administrador '
+        + 'like "' + Login + '" and Senha_Administrador like "' + Senha + '"');
+      Executar_Query_Aberta('Administrador');
+      if FDQuery1.RecordCount > 0 then
+      begin
+        Result := true;
+      end
+      else
+      begin
+        Result := false;
+      end;
+    except
+      Mensagens.Erro_Conexao_Login();
+    end;
+  end;
+  if Nome_Tabela = 'Aluno' then
+  begin
+    try
+      FDQuery1.SQL.Clear;
+      FDQuery1.SQL.Append('select Cod_Aluno from Aluno where Login_Aluno ' +
+        'like "' + Login + '" and Senha_Aluno like "' + Senha + '"');
+      Executar_Query_Aberta('Aluno');
+      if FDQuery1.RecordCount > 0 then
+      begin
+        Result := true;
+      end
+      else
+      begin
+        Result := false;
+      end;
+    except
+      Mensagens.Erro_Conexao_Login();
+    end;
+  end;
+  if Nome_Tabela = 'Professor' then
+  begin
+    try
+      FDQuery1.SQL.Clear;
+      FDQuery1.SQL.Append
+        ('select Cod_Professor from Professor where Login_Professor ' + 'like "'
+        + Login + '" and Senha_Professor like "' + Senha + '"');
+      Executar_Query_Aberta('Professor');
+      if FDQuery1.RecordCount > 0 then
+      begin
+        Result := true;
+      end
+      else
+      begin
+        Result := false;
+      end;
+    except
+      Mensagens.Erro_Conexao_Login();
+    end;
+  end;
+  if Nome_Tabela = 'Coordenador' then
+  begin
+    try
+      FDQuery1.SQL.Clear;
+      FDQuery1.SQL.Append
+        ('select Cod_Coordenador from Coordenador where Login_Coordenador ' +
+        'like "' + Login + '" and Senha_Coordenador like "' + Senha + '"');
+      Executar_Query_Aberta('Coordenador');
+      if FDQuery1.RecordCount > 0 then
+      begin
+        Result := true;
+      end
+      else
+      begin
+        Result := false;
+      end;
+    except
+      Mensagens.Erro_Conexao_Login();
+    end;
+  end;
+  if Nome_Tabela = 'Administrador S.' then
+  begin
+    try
+      FDQuery1.SQL.Clear;
+      FDQuery1.SQL.Append
+        ('select Cod_Administrador_S from Administrador_S where Login_Administrador_S '
+        + 'like "' + Login + '" and Senha_Administrador_S like "' +
+        Senha + '"');
+      Executar_Query_Aberta('Administrador S.');
+      if FDQuery1.RecordCount > 0 then
+      begin
+        Result := true;
+      end
+      else
+      begin
+        Result := false;
+      end;
+    except
+      Mensagens.Erro_Conexao_Login();
+    end;
+  end;
+end;
+
+procedure TCentro_Controle.Ativar_Tabelas;
+begin
+  try
+    Application.ProcessMessages;
+    Tabela_Administrador.Active := true;
+    Application.ProcessMessages;
+    Tabela_Agenda.Active := true;
+    Application.ProcessMessages;
+    Tabela_Aluno.Active := true;
+    Application.ProcessMessages;
+    Tabela_Atividades.Active := true;
+    Application.ProcessMessages;
+    Tabela_Avaliacoes.Active := true;
+    Application.ProcessMessages;
+    Tabela_Avaliacoes_Realizadas.Active := true;
+    Application.ProcessMessages;
+    Tabela_Coordenador.Active := true;
+    Application.ProcessMessages;
+    Tabela_Cronograma.Active := true;
+    Application.ProcessMessages;
+    Tabela_Curso.Active := true;
+    Application.ProcessMessages;
+    Tabela_Disciplina.Active := true;
+    Application.ProcessMessages;
+    Tabela_Disciplina_Por_Turmas.Active := true;
+    Application.ProcessMessages;
+    Tabela_Disciplina_Professor.Active := true;
+    Application.ProcessMessages;
+    Tabela_Matricula.Active := true;
+    Application.ProcessMessages;
+    Tabela_Professor.Active := true;
+    Application.ProcessMessages;
+    Tabela_Turmas.Active := true;
+    Application.ProcessMessages;
+    Tabela_Administrador_S.Active := true;
+  except
+    Mensagens.Erro_Tabelas_Nao_Ativaram;
+  end;
+end;
+
+procedure TCentro_Controle.Conectar_Servidor_MySQL;
+begin
+  Application.ProcessMessages;
+  try
+    FDConnection1.Connected := true;
+  except
+    Mensagens.Erro_Conexao_MySQL;
+  end;
+end;
+
+procedure TCentro_Controle.Timer1Timer(Sender: TObject);
+var
+  Velocidade: Integer;
+  Tempo_Esperado: Double;
+begin
+  Tempo := Tempo + 1;
+  Velocidade := Tamanho_Transferido_Arquivo -
+    Tamanho_Transferido_Arquivo_Anterior;
+  FRM_Central_Transferencia.Label9.Text := IntToStr(Velocidade) +
+    ' Bytes/segundo';
+  Tempo_Esperado := (Tamanho_Arquivo - Auxiliar_Tempo) / Velocidade;
+  FRM_Central_Transferencia.Label11.Text := (int(Tempo_Esperado)).ToString +
+    ' Segundos';
+end;
+
+procedure TCentro_Controle.Trocar_Stylebook;
+begin
+  FRM_Login.StyleBook := StyleBook1;
+  FRM_Principal.StyleBook := StyleBook1;
+  Frm_Cadastro_Coordenador.StyleBook := StyleBook1;
+  Frm_Cadastro_Administrador.StyleBook := StyleBook1;
+  Frm_Arquivos.StyleBook := StyleBook1;
+  Frm_Cadastro_Professor.StyleBook := StyleBook1;
+  FRMAluno.StyleBook := StyleBook1;
+  FRM_Central_Transferencia.StyleBook := StyleBook1;
+  FRM_Cadastro_Curso.StyleBook := StyleBook1;
+  Frm_Cadastro_Disciplina.StyleBook := StyleBook1;
+  Frm_Cadastro_Turma.StyleBook := StyleBook1;
+  Frm_Agenda.StyleBook := StyleBook1;
+  Frm_Marcacao_1_Aluno.StyleBook := StyleBook1;
+  Frm_Marcacao_N_Alunos.StyleBook := StyleBook1;
+  Frm_Marcacao_N_Alunos_N_Turmas.StyleBook := StyleBook1;
+  Frm_Marcacao_N_Alunos_N_Turmas_N_Cursos.StyleBook := StyleBook1;
+  Frm_Marcacao_N_Cursos.StyleBook := StyleBook1;
+  Frm_Marcacao_N_Turmas.StyleBook := StyleBook1;
+  Frm_Cadastro_Eventos.StyleBook := StyleBook1;
+  Frm_Pesquisa.StyleBook := StyleBook1;
+end;
+
+procedure TCentro_Controle.IdFTP1Connected(Sender: TObject);
+begin
+  Application.ProcessMessages;
+end;
+
+procedure TCentro_Controle.IdFTP1Work(ASender: TObject; AWorkMode: TWorkMode;
+  AWorkCount: Int64);
+begin
+  FRM_Central_Transferencia.ProgressBar1.Value := AWorkCount;
+  FRM_Central_Transferencia.Label15.Text := IntToStr(AWorkCount) + ' Bytes';
+  Tamanho_Transferido_Arquivo_Anterior := Tamanho_Transferido_Arquivo;
+  Tamanho_Transferido_Arquivo := AWorkCount;
+  Auxiliar_Tempo := AWorkCount;
+  Application.ProcessMessages;
+end;
+
+procedure TCentro_Controle.IdFTP1WorkBegin(ASender: TObject;
+  AWorkMode: TWorkMode; AWorkCountMax: Int64);
+begin
+  if Tipo_Transferencia = 1 then
+  begin
+    FRM_Central_Transferencia.ProgressBar1.Max := AWorkCountMax;
+    FRM_Central_Transferencia.Label6.Text := IntToStr(AWorkCountMax) + ' Bytes';
+    Tamanho_Arquivo := AWorkCountMax;
+    Timer1.Enabled := true;
+  end
+  else
+  begin
+    { FRM_Central_Transferencia.ProgressBar1.Max :=
+      IdFTP1.size(Nome_Arquivo_Servidor);
+      FRM_Central_Transferencia.Label6.Text :=
+      inttostr(IdFTP1.size(Nome_Arquivo_Servidor)) + ' Bytes';
+      Tamanho_Arquivo := IdFTP1.size(Nome_Arquivo_Servidor);
+      Timer1.Enabled := true;
+    }
+    ShowMessage(IntToStr(IdFTP1.size(Nome_Arquivo_Servidor)));
+  end;
+end;
+
+procedure TCentro_Controle.IdFTP1WorkEnd(ASender: TObject;
+  AWorkMode: TWorkMode);
+begin
+  ShowMessage(IntToStr(Tempo));
+  Timer1.Enabled := false;
+  FRM_Central_Transferencia.Hide;
+  Unit_Central_Transferencia.Formulario_Anterior.Show;
+end;
+
+procedure TCentro_Controle.Preparar_Menus;
+begin
+  FRMAluno.Panel2.Width := 1;
+  FRM_Principal.Panel3.Width := 1;
+  FRM_Principal.Panel3.Height := 1;
+  FRM_Principal.Panel4.Width := 1;
+  FRM_Principal.Panel4.Height := 1;
+  FRM_Principal.Panel5.Width := 1;
+  FRM_Principal.Panel5.Height := 1;
+  Frm_Arquivos.Panel1.Width := 1;
+  Frm_Cadastro_Administrador.Panel1.Width := 1;
+  Frm_Cadastro_Coordenador.Panel1.Width := 1;
+  Frm_Cadastro_Professor.Panel1.Width := 1;
+  FRM_Cadastro_Curso.Panel2.Width := 1;
+  Frm_Cadastro_Disciplina.Panel1.Width := 1;
+  Frm_Cadastro_Turma.Panel2.Width := 1;
+  Frm_Agenda.Panel1.Width := 1;
+  Frm_Cadastro_Eventos.Panel1.Width := 1;
+  FRM_Pesquisa.Panel2.Width := 1;
+end;
+
+procedure TCentro_Controle.Reset_Menus;
+begin
+  Preparar_Menus;
+  UnitAluno.Estado_Menu := true;
+  Unit_Cadastro_Professor.Estado_Menu := true;
+  Unit_Arquivos.Estado_Menu := true;
+  Unit_Cadastro_Administrador.Estado_Menu := true;
+  Unit_Cadastro_Coordenador.Estado_Menu := true;
+  Unit_Principal.Estado_Menu_Opcoes := false;
+  Unit_Principal.Estado_Menu_Usuarios := false;
+  Unit_Principal.Estado_Menu_Ferramentas := false;
+  Unit_Cadastro_Curso.Estado_Menu := true;
+  Unit_Cadastro_Disciplina.Estado_Menu := true;
+  Unit_Cadastro_Turmas.Estado_Menu := true;
+  Unit_Cadastro_Eventos.Estado_Menu := true;
+  Unit_Agenda.Estado_Menu := true;
+end;
+
+procedure TCentro_Controle.Conectar_Servidor_FTP;
+begin
+  try
+    IdFTP1.Connect;
+  except
+    Mensagens.Erro_Conexao_FTP;
+  end;
+end;
+
+procedure TCentro_Controle.Enviar_Arquivo(Caminho_Arquivo_Computador: String;
+  Caminho_Arquivo_Servidor: string; Nome_Arquivo: String);
+begin
+  try
+    FRM_Central_Transferencia.Label4.Text := Nome_Arquivo;
+    FRM_Central_Transferencia.Label2.Text := 'UPLOAD';
+    Tipo_Transferencia := 1;
+    IdFTP1.Put(Caminho_Arquivo_Computador, Caminho_Arquivo_Servidor, false);
+  except
+    Mensagens.Erro_Envio_Arquivo;
+  end;
+end;
+
+procedure TCentro_Controle.Baixar_Arquivo(Caminho_Arquivo_Servidor: string;
+  Caminho_Arquivo_Computador: String; Nome_Arquivo: String);
+begin
+  try
+    FRM_Central_Transferencia.Label4.Text := Nome_Arquivo;
+    FRM_Central_Transferencia.Label2.Text := 'DOWNLOAD';
+    Nome_Arquivo_Servidor := Nome_Arquivo;
+    Tipo_Transferencia := 2;
+    IdFTP1.Get(Caminho_Arquivo_Servidor, Caminho_Arquivo_Computador,
+      true, false);
+  except
+    Mensagens.Erro_Download_Arquivo;
+  end;
+end;
+
+end.

@@ -1,0 +1,332 @@
+unit Unit_Login;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes,
+  System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Objects,
+  FMX.Edit, FMX.StdCtrls, FMX.Controls.Presentation, FMX.Layouts, FMX.Effects,
+  FMX.ListBox, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client;
+
+type
+  TFRM_Login = class(TForm)
+    ScaledLayout1: TScaledLayout;
+    StatusBar1: TStatusBar;
+    Panel2: TPanel;
+    ScaledLayout3: TScaledLayout;
+    Timer1: TTimer;
+    GroupBox1: TGroupBox;
+    Label1: TLabel;
+    Edit1: TEdit;
+    ClearEditButton1: TClearEditButton;
+    Label2: TLabel;
+    Edit2: TEdit;
+    ClearEditButton2: TClearEditButton;
+    PasswordEditButton1: TPasswordEditButton;
+    GroupBox2: TGroupBox;
+    ScaledLayout5: TScaledLayout;
+    Image2: TImage;
+    Label5: TLabel;
+    ShadowEffect2: TShadowEffect;
+    ScaledLayout6: TScaledLayout;
+    Image3: TImage;
+    Label6: TLabel;
+    ShadowEffect3: TShadowEffect;
+    ScaledLayout2: TScaledLayout;
+    Image1: TImage;
+    Label3: TLabel;
+    ShadowEffect1: TShadowEffect;
+    Label4: TLabel;
+    ComboBox1: TComboBox;
+    procedure Limpar_Campos;
+    procedure FormShow(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure Image2MouseEnter(Sender: TObject);
+    procedure Image2MouseLeave(Sender: TObject);
+    procedure Image3MouseEnter(Sender: TObject);
+    procedure Image3MouseLeave(Sender: TObject);
+    procedure Image1MouseEnter(Sender: TObject);
+    procedure Image1MouseLeave(Sender: TObject);
+    procedure Image2MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image2MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image3MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image3MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image1MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image3Click(Sender: TObject);
+    procedure Image1Click(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
+    procedure Edit1KeyDown(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
+    procedure Edit2KeyDown(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
+    procedure Efetuar_Permissao(Tipo_Usuario: integer);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FRM_Login: TFRM_Login;
+
+implementation
+
+uses Unit_Controle, Unit_Mensagens, Unit_Principal;
+{$R *.fmx}
+
+procedure TFRM_Login.Efetuar_Permissao(Tipo_Usuario: integer);
+begin
+  Unit_Controle.Tipo_Usuario := Tipo_Usuario;
+  FRM_Principal.Image7.Enabled := false;
+  FRM_Principal.Label7.Enabled := false;
+  FRM_Principal.Image10.Enabled := false;
+  FRM_Principal.Label8.Enabled := false;
+  FRM_Principal.Image11.Enabled := false;
+  FRM_Principal.Label9.Enabled := false;
+  FRM_Principal.Image12.Enabled := false;
+  FRM_Principal.Label10.Enabled := false;
+  FRM_Principal.Image14.Enabled := false;
+  FRM_Principal.Label11.Enabled := false;
+  FRM_Principal.Image19.Enabled := false;
+  FRM_Principal.Label15.Enabled := false;
+  FRM_Principal.Image21.Enabled := false;
+  FRM_Principal.Label16.Enabled := false;
+  FRM_Principal.Image22.Enabled := false;
+  FRM_Principal.Label17.Enabled := false;
+  if (Tipo_Usuario = 1) or (Tipo_Usuario = 2) then
+  begin
+    FRM_Principal.Image14.Enabled := true;
+    FRM_Principal.Label11.Enabled := true;
+  end;
+  if Tipo_Usuario = 3 then
+  begin
+    FRM_Principal.Image10.Enabled := false;
+    FRM_Principal.Label8.Enabled := false;
+    FRM_Principal.Image11.Enabled := false;
+    FRM_Principal.Label9.Enabled := false;
+    FRM_Principal.Image12.Enabled := false;
+    FRM_Principal.Label10.Enabled := false;
+    FRM_Principal.Image14.Enabled := false;
+    FRM_Principal.Label11.Enabled := false;
+    FRM_Principal.Image19.Enabled := false;
+    FRM_Principal.Label15.Enabled := false;
+    FRM_Principal.Image21.Enabled := false;
+    FRM_Principal.Label16.Enabled := false;
+    FRM_Principal.Image22.Enabled := false;
+    FRM_Principal.Label17.Enabled := false;
+  end;
+end;
+
+procedure TFRM_Login.Edit1KeyDown(Sender: TObject; var Key: Word;
+  var KeyChar: Char; Shift: TShiftState);
+begin
+  if Key = vkReturn then
+  begin
+    Edit2.SetFocus;
+  end;
+end;
+
+procedure TFRM_Login.Edit2KeyDown(Sender: TObject; var Key: Word;
+  var KeyChar: Char; Shift: TShiftState);
+begin
+  if Key = vkReturn then
+  begin
+    Image2Click(Image2);
+  end;
+end;
+
+procedure TFRM_Login.Limpar_Campos;
+begin
+  Edit1.Text := '';
+  Edit2.Text := '';
+  ComboBox1.ItemIndex := -1;
+  Edit1.SetFocus;
+end;
+
+procedure TFRM_Login.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+begin
+  Mensagens.Encerrar_Aplicacao;
+end;
+
+procedure TFRM_Login.FormShow(Sender: TObject);
+begin
+  Edit1.SetFocus;
+end;
+
+procedure TFRM_Login.Image1Click(Sender: TObject);
+begin
+  Mensagens.Encerrar_Aplicacao;
+end;
+
+procedure TFRM_Login.Image1MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect1.Opacity := 1;
+end;
+
+procedure TFRM_Login.Image1MouseEnter(Sender: TObject);
+begin
+  ShadowEffect1.Enabled := true;
+end;
+
+procedure TFRM_Login.Image1MouseLeave(Sender: TObject);
+begin
+  ShadowEffect1.Enabled := false;
+end;
+
+procedure TFRM_Login.Image1MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect1.Opacity := 0.6;
+end;
+
+procedure TFRM_Login.Image2Click(Sender: TObject);
+begin
+  if (Edit1.Text <> '') and (Edit2.Text <> '') and (ComboBox1.ItemIndex <> -1)
+  then
+  begin
+    if ComboBox1.ItemIndex = 0 then
+    begin
+      if Centro_Controle.Fazer_Login('Aluno', Edit1.Text, Edit2.Text) = true
+      then
+      begin
+        FRM_Login.Hide;
+        Limpar_Campos;
+        Efetuar_Permissao(1);
+        FRM_Principal.Show;
+      end
+      else
+      begin
+        Mensagens.Erro_Login('Aluno');
+      end;
+    end;
+    if ComboBox1.ItemIndex = 1 then
+    begin
+      if Centro_Controle.Fazer_Login('Professor', Edit1.Text, Edit2.Text) = true
+      then
+      begin
+        FRM_Login.Hide;
+        Limpar_Campos;
+        Efetuar_Permissao(2);
+        FRM_Principal.Show;
+      end
+      else
+      begin
+        Mensagens.Erro_Login('Professor');
+      end;
+    end;
+    if ComboBox1.ItemIndex = 2 then
+    begin
+      if Centro_Controle.Fazer_Login('Coordenador', Edit1.Text, Edit2.Text) = true
+      then
+      begin
+        FRM_Login.Hide;
+        Limpar_Campos;
+        Efetuar_Permissao(3);
+        FRM_Principal.Show;
+      end
+      else
+      begin
+        Mensagens.Erro_Login('Coordenador');
+      end;
+    end;
+    if ComboBox1.ItemIndex = 3 then
+    begin
+      if Centro_Controle.Fazer_Login('Administrador', Edit1.Text, Edit2.Text) = true
+      then
+      begin
+        FRM_Login.Hide;
+        Limpar_Campos;
+        Efetuar_Permissao(4);
+        FRM_Principal.Show;
+      end
+      else
+      begin
+        Mensagens.Erro_Login('Administrador');
+      end;
+    end;
+    if ComboBox1.ItemIndex = 4 then
+    begin
+      if Centro_Controle.Fazer_Login('Administrador S.', Edit1.Text, Edit2.Text)
+        = true then
+      begin
+        FRM_Login.Hide;
+        Limpar_Campos;
+        Efetuar_Permissao(5);
+        FRM_Principal.Show;
+      end
+      else
+      begin
+        Mensagens.Erro_Login('Administrador S.');
+      end;
+    end;
+  end
+  else
+  begin
+    Mensagens.Erro_Campos_Obrigatorios_Sem_Preenchimento;
+  end;
+end;
+
+procedure TFRM_Login.Image2MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect2.Opacity := 1;
+end;
+
+procedure TFRM_Login.Image2MouseEnter(Sender: TObject);
+begin
+  ShadowEffect2.Enabled := true;
+end;
+
+procedure TFRM_Login.Image2MouseLeave(Sender: TObject);
+begin
+  ShadowEffect2.Enabled := false;
+end;
+
+procedure TFRM_Login.Image2MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect2.Opacity := 0.6;
+end;
+
+procedure TFRM_Login.Image3Click(Sender: TObject);
+begin
+  FRM_Login.Hide;
+  Limpar_Campos;
+  FRM_Principal.Show;
+end;
+
+procedure TFRM_Login.Image3MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect3.Opacity := 1;
+end;
+
+procedure TFRM_Login.Image3MouseEnter(Sender: TObject);
+begin
+  ShadowEffect3.Enabled := true;
+end;
+
+procedure TFRM_Login.Image3MouseLeave(Sender: TObject);
+begin
+  ShadowEffect3.Enabled := false;
+end;
+
+procedure TFRM_Login.Image3MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect3.Opacity := 0.6;
+end;
+
+end.

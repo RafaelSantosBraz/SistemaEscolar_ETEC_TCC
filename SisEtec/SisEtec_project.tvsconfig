@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<TgConfig Version="3" SubLevelDisabled="False">
+  <Option Name="namespaceFolder.SisEtec" Type="System.String" Value="SisEtec" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.Unit_Cadastro_Administrador" Type="System.String" Value="Unit_Cadastro_Administrador" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.Unit_Mensagens" Type="System.String" Value="Unit_Mensagens" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.Unit_Login" Type="System.String" Value="Unit_Login" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.Unit_Configuracoes" Type="System.String" Value="Unit_Configuracoes" Category="General" IsBrowsable="False" />
+</TgConfig>

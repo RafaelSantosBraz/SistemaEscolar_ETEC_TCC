@@ -1,0 +1,215 @@
+unit Unit_Mensagens;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes,
+  System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs;
+
+type
+  TMensagens = class(TForm)
+    procedure Encerrar_Aplicacao;
+    function Fechar_Formulario(Nome_Formulario: String): Boolean;
+    procedure Trocar_Usuario(Formulario_Atual: TForm);
+    procedure Cancelar_Transferencia;
+    procedure Erro_Conexao_FTP;
+    procedure Erro_Envio_Arquivo;
+    procedure Erro_Download_Arquivo;
+    procedure Erro_Conexao_MySQL;
+    procedure Erro_Campos_Obrigatorios_Sem_Preenchimento;
+    procedure Erro_Tabelas_Nao_Ativaram;
+    procedure Erro_Cadastro(Nome_Cadastro: String);
+    procedure Erro_Login(Nome_Tabela: String);
+    procedure Erro_Conexao_Login;
+    procedure Erro_Pesquisa(Nome_Tabela: String);
+    procedure Erro_Componentes_Iniciais_NAO_Carregados;
+    procedure Erro_Login_Ja_Existente;
+    procedure Cadastrado_Com_Sucesso(Nome_Tabela: String);
+    procedure Realizar_Novo_Cadastro(Nome_Tabela: String);
+  private
+    { Private declarations }
+    procedure Gerar_Mensagem_Simples(Texto_Mensagem: String);
+    function Gerar_Mensagem_Confirmacao(Texto_Mensagem: String): Boolean;
+  public
+    { Public declarations }
+  end;
+
+var
+  Mensagens: TMensagens;
+
+implementation
+
+{$R *.fmx}
+
+uses Unit_Controle, Unit_Login, Unit_Principal;
+
+procedure TMensagens.Erro_Login_Ja_Existente;
+begin
+  Gerar_Mensagem_Simples('O "Login" informado está sendo utilizado por outro ' +
+    'usuário! Digite outro e tente novamente.');
+end;
+
+procedure TMensagens.Erro_Pesquisa(Nome_Tabela: String);
+begin
+  Gerar_Mensagem_Simples('Não foi possível realizar Pesquisa em "' + Nome_Tabela
+    + '". Tente novamente mais tarde.');
+end;
+
+procedure TMensagens.Erro_Conexao_Login;
+begin
+  Gerar_Mensagem_Simples('Ocorreu um erro durante o "Login"! Verifique sua ' +
+    'conexão com a Internet e tente novamente.');
+end;
+
+procedure TMensagens.Erro_Login(Nome_Tabela: String);
+begin
+  Gerar_Mensagem_Simples('Não foi possível logar como "' + Nome_Tabela +
+    '"! Verifique: Nome de usuário; Senha; Conexão com a Internet.');
+end;
+
+procedure TMensagens.Cadastrado_Com_Sucesso(Nome_Tabela: String);
+begin
+  Gerar_Mensagem_Simples('Cadastro de "' + Nome_Tabela +
+    '" efetuado com Sucesso!');
+end;
+
+procedure TMensagens.Erro_Cadastro(Nome_Cadastro: String);
+begin
+  Gerar_Mensagem_Simples('Não foi possível cadastrar "' + Nome_Cadastro +
+    '". Tente novamente mais tarde.');
+end;
+
+procedure TMensagens.Erro_Tabelas_Nao_Ativaram;
+begin
+  Gerar_Mensagem_Simples
+    ('Alguns Módulos do sistema não puderam ser ativados corretamente! ' +
+    'O aplicativo será encerrado a seguir.');
+  Application.Terminate;
+end;
+
+procedure TMensagens.Erro_Campos_Obrigatorios_Sem_Preenchimento;
+begin
+  Gerar_Mensagem_Simples('Preencha TODOS os campos antes de continuar!');
+end;
+
+procedure TMensagens.Erro_Componentes_Iniciais_NAO_Carregados;
+begin
+  Gerar_Mensagem_Simples
+    ('Alguns dados não puderam ser carregados corretamente! ' +
+    'Este formulário será fechado a seguir. Tente novamente mais tarde.');
+end;
+
+procedure TMensagens.Erro_Conexao_MySQL;
+begin
+  Gerar_Mensagem_Simples
+    ('Não foi possível se conectar ao servidor MySQL (Banco de Dados)! ' +
+    'Verifique sua conexão com ' +
+    'a internet e tente novamente. Se o problema persistir contate o' +
+    ' administrador. ' +
+    'Possível problema: Seu endereço IP não está cadastrado no servidor. ' +
+    'O Aplicativo será encerrado a seguir.');
+  Application.Terminate;
+end;
+
+procedure TMensagens.Erro_Envio_Arquivo;
+begin
+  Gerar_Mensagem_Simples
+    ('Não foi possível Enviar o arquivo selecionado! Verifique sua conexão com '
+    + 'a internet e tente novamente. Se o problema persistir contate o ' +
+    'administrador.');
+end;
+
+procedure TMensagens.Erro_Download_Arquivo;
+begin
+  Gerar_Mensagem_Simples
+    ('Não foi possível Baixar o arquivo selecionado! Verifique sua conexão com '
+    + 'a internet e tente novamente. Se o problema persistir contate o' +
+    ' administrador.');
+end;
+
+procedure TMensagens.Erro_Conexao_FTP;
+begin
+  Gerar_Mensagem_Simples
+    ('Não foi possível se conectar ao servidor de arquivos! Verifique sua ' +
+    'conexão com ' +
+    'a internet e tente novamente. Se o problema persistir contate o ' +
+    'administrador. ' + 'O Aplicativo será encerrado a seguir.');
+  Application.Terminate;
+end;
+
+procedure TMensagens.Cancelar_Transferencia;
+begin
+  if Gerar_Mensagem_Confirmacao
+    ('Deseja realmente Cancelar a Transferência atual?') = true then
+  begin
+    try
+      Centro_Controle.IdFTP1.Abort;
+    except
+      Gerar_Mensagem_Simples
+        ('Erro ao encerrar Transferência! Por favor, Tente novamente.');
+    end;
+  end;
+end;
+
+procedure TMensagens.Trocar_Usuario(Formulario_Atual: TForm);
+begin
+  if Gerar_Mensagem_Confirmacao('Deseja realmente sair do usuário atual?') = true
+  then
+  begin
+    Formulario_Atual.Hide;
+    Centro_Controle.Reset_Menus;
+    FRM_Login.Show;
+  end;
+end;
+
+function TMensagens.Realizar_Novo_Cadastro(Nome_Tabela: String);
+begin
+  if Gerar_Mensagem_Confirmacao('Deseja cadastrar outro "' + Nome_Tabela + '?')
+    = true then
+  begin
+    result := true;
+  end
+  else
+  begin
+    result := false;
+  end;
+end;
+
+function TMensagens.Fechar_Formulario(Nome_Formulario: String): Boolean;
+begin
+  result := Gerar_Mensagem_Confirmacao('Deseja sair do ' +
+    Nome_Formulario + '?');
+end;
+
+procedure TMensagens.Encerrar_Aplicacao;
+begin
+  if MessageDlg('Deseja sair do Aplicativo?',
+    System.UITypes.TMsgDlgType.mtConfirmation, [System.UITypes.TMsgDlgBtn.mbYes,
+    System.UITypes.TMsgDlgBtn.mbNo], 0) = System.UITypes.mrYes then
+  begin
+    Application.Terminate;
+  end;
+end;
+
+procedure TMensagens.Gerar_Mensagem_Simples(Texto_Mensagem: String);
+begin
+  ShowMessage(Texto_Mensagem);
+end;
+
+function TMensagens.Gerar_Mensagem_Confirmacao(Texto_Mensagem: String): Boolean;
+begin
+  if MessageDlg(Texto_Mensagem, System.UITypes.TMsgDlgType.mtConfirmation,
+    [System.UITypes.TMsgDlgBtn.mbYes, System.UITypes.TMsgDlgBtn.mbNo], 0)
+    = System.UITypes.mrYes then
+  begin
+    Centro_Controle.Reset_Menus;
+    result := true;
+  end
+  else
+  begin
+    result := false;
+  end;
+end;
+
+end.

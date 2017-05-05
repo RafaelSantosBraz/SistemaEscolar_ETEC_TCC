@@ -1,0 +1,711 @@
+unit Unit_Cadastro_Turmas;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes,
+  System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Edit,
+  FMX.StdCtrls, FMX.Objects, FMX.Controls.Presentation, FMX.Layouts,
+  FMX.ListBox,
+  FMX.Effects;
+
+type
+  TFRM_Cadastro_Turma = class(TForm)
+    ScaledLayout1: TScaledLayout;
+    Panel1: TPanel;
+    ScaledLayout2: TScaledLayout;
+    Image1: TImage;
+    Label1: TLabel;
+    Edit1: TEdit;
+    GroupBox1: TGroupBox;
+    StatusBar1: TStatusBar;
+    Panel2: TPanel;
+    ScaledLayout3: TScaledLayout;
+    ClearEditButton1: TClearEditButton;
+    Image8: TImage;
+    Image9: TImage;
+    Image13: TImage;
+    ScaledLayout4: TScaledLayout;
+    ScaledLayout5: TScaledLayout;
+    ScaledLayout6: TScaledLayout;
+    ScaledLayout7: TScaledLayout;
+    Image2: TImage;
+    Label3: TLabel;
+    Image3: TImage;
+    Label4: TLabel;
+    Image4: TImage;
+    Label5: TLabel;
+    GroupBox2: TGroupBox;
+    ScaledLayout8: TScaledLayout;
+    ScaledLayout9: TScaledLayout;
+    Image5: TImage;
+    Image6: TImage;
+    Label6: TLabel;
+    Label7: TLabel;
+    Image7: TImage;
+    Label8: TLabel;
+    ComboBox1: TComboBox;
+    Label2: TLabel;
+    Image10: TImage;
+    ShadowEffect1: TShadowEffect;
+    ShadowEffect2: TShadowEffect;
+    ShadowEffect3: TShadowEffect;
+    ShadowEffect4: TShadowEffect;
+    ShadowEffect5: TShadowEffect;
+    ScaledLayout10: TScaledLayout;
+    ShadowEffect6: TShadowEffect;
+    ShadowEffect7: TShadowEffect;
+    Timer1: TTimer;
+    ScaledLayout14: TScaledLayout;
+    Image11: TImage;
+    Label9: TLabel;
+    ShadowEffect10: TShadowEffect;
+    procedure Image2Click(Sender: TObject);
+    procedure Image2MouseEnter(Sender: TObject);
+    procedure Image2MouseLeave(Sender: TObject);
+    procedure Image2MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image3Click(Sender: TObject);
+    procedure Image3MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image3MouseEnter(Sender: TObject);
+    procedure Image3MouseLeave(Sender: TObject);
+    procedure Image3MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image4MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image4MouseEnter(Sender: TObject);
+    procedure Image4MouseLeave(Sender: TObject);
+    procedure Image4MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image7Click(Sender: TObject);
+    procedure Image7MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image7MouseEnter(Sender: TObject);
+    procedure Image7MouseLeave(Sender: TObject);
+    procedure Image7MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label3MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label3MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label4MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label4MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label5MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label5MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label8MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label8MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image5MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image5MouseEnter(Sender: TObject);
+    procedure Image5MouseLeave(Sender: TObject);
+    procedure Image5MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image6MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image6MouseEnter(Sender: TObject);
+    procedure Image6MouseLeave(Sender: TObject);
+    procedure Image6MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label6MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label6MouseEnter(Sender: TObject);
+    procedure Label6MouseLeave(Sender: TObject);
+    procedure Label6MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label7MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label7MouseEnter(Sender: TObject);
+    procedure Label7MouseLeave(Sender: TObject);
+    procedure Label7MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure FormShow(Sender: TObject);
+    procedure Image1Click(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+    procedure Edit1KeyDown(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
+    procedure Image2MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label4MouseEnter(Sender: TObject);
+    procedure Label4MouseLeave(Sender: TObject);
+    procedure Label5MouseEnter(Sender: TObject);
+    procedure Label5MouseLeave(Sender: TObject);
+    procedure Label8MouseEnter(Sender: TObject);
+    procedure Label8MouseLeave(Sender: TObject);
+    procedure Label3MouseEnter(Sender: TObject);
+    procedure Label3MouseLeave(Sender: TObject);
+    procedure Image6Click(Sender: TObject);
+    procedure Image11Click(Sender: TObject);
+    procedure Image4Click(Sender: TObject);
+    procedure Image11MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image11MouseEnter(Sender: TObject);
+    procedure Image11MouseLeave(Sender: TObject);
+    procedure Image11MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure Image5Click(Sender: TObject);
+    function Verificar_Campos(): Boolean;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormHide(Sender: TObject);
+    procedure Inicial;
+    procedure Limpar_Campos;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FRM_Cadastro_Turma: TFRM_Cadastro_Turma;
+  Estado_Menu: Boolean;
+  Codigo_Turma_Anterior: String;
+
+implementation
+
+{$R *.fmx}
+
+uses Unit_Mensagens, Unit_Principal, Unit_Arquivos, Unit_Agenda, Unit_Controle,
+  Unit_Resultado_Pesquisa;
+
+procedure TFRM_Cadastro_Turma.Edit1KeyDown(Sender: TObject; var Key: Word;
+  var KeyChar: Char; Shift: TShiftState);
+begin
+  if Key = vkReturn then
+  begin
+    ComboBox1.SetFocus;
+  end;
+end;
+
+procedure TFRM_Cadastro_Turma.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  Unit_Resultado_Pesquisa.Estado_Edicao := false;
+end;
+
+procedure TFRM_Cadastro_Turma.FormCloseQuery(Sender: TObject;
+  var CanClose: Boolean);
+begin
+  if Mensagens.Fechar_Formulario('Controle de Turmas') = false then
+  begin
+    CanClose := false;
+  end
+  else
+  begin
+    FRM_Principal.Show;
+  end;
+end;
+
+procedure TFRM_Cadastro_Turma.FormHide(Sender: TObject);
+begin
+  Unit_Resultado_Pesquisa.Estado_Edicao := false;
+end;
+
+procedure TFRM_Cadastro_Turma.FormShow(Sender: TObject);
+begin
+  Estado_Menu := true;
+  Edit1.SetFocus;
+  if Unit_Resultado_Pesquisa.Estado_Edicao = false then
+  begin
+    Inicial;
+  end;
+end;
+
+procedure TFRM_Cadastro_Turma.Inicial;
+var
+  Cont: Integer;
+begin
+  Limpar_Campos;
+  ComboBox1.Items.Clear;
+  try
+    Centro_Controle.FDQuery1.SQL.Clear;
+    Centro_Controle.FDQuery1.SQL.Append
+      ('select Nome_Curso from Curso order by Cod_Curso');
+    Centro_Controle.Executar_Query_Aberta('Turmas');
+    Centro_Controle.FDQuery1.Prior;
+    ComboBox1.Items.Append(Centro_Controle.FDQuery1.FieldByName
+      ('Nome_Curso').Value);
+    for Cont := 1 to (Centro_Controle.FDQuery1.RecordCount - 1) do
+    begin
+      Centro_Controle.FDQuery1.Next;
+      ComboBox1.Items.Append(Centro_Controle.FDQuery1.FieldByName
+        ('Nome_Curso').Value);
+    end;
+  except
+    Mensagens.Erro_Componentes_Iniciais_NAO_Carregados;
+    FRM_Cadastro_Turma.Hide;
+    FRM_Principal.Show;
+  end;
+end;
+
+procedure TFRM_Cadastro_Turma.Limpar_Campos;
+begin
+  Edit1.Text := '';
+  ComboBox1.ItemIndex := -1;
+  Edit1.SetFocus;
+end;
+
+procedure TFRM_Cadastro_Turma.Image11Click(Sender: TObject);
+begin
+  if Mensagens.Fechar_Formulario('Cadastro de Turmas') = true then
+  begin
+    FRM_Cadastro_Turma.Hide;
+    FRM_Arquivos.Show;
+  end;
+end;
+
+procedure TFRM_Cadastro_Turma.Image11MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect10.Opacity := 1;
+end;
+
+procedure TFRM_Cadastro_Turma.Image11MouseEnter(Sender: TObject);
+begin
+  ShadowEffect10.Enabled := true;
+end;
+
+procedure TFRM_Cadastro_Turma.Image11MouseLeave(Sender: TObject);
+begin
+  ShadowEffect10.Enabled := false;
+end;
+
+procedure TFRM_Cadastro_Turma.Image11MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect10.Opacity := 0.4;
+end;
+
+procedure TFRM_Cadastro_Turma.Image1Click(Sender: TObject);
+begin
+  if Estado_Menu = true then
+  begin
+    Estado_Menu := false;
+    Timer1.Enabled := true;
+  end
+  else
+  begin
+    Estado_Menu := true;
+    Timer1.Enabled := true;
+  end;
+end;
+
+procedure TFRM_Cadastro_Turma.Image2Click(Sender: TObject);
+begin
+  if Mensagens.Fechar_Formulario('Cadastro de Turmas') = true then
+  begin
+    FRM_Cadastro_Turma.Hide;
+    FRM_Principal.Show;
+  end;
+end;
+
+procedure TFRM_Cadastro_Turma.Image2MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect2.Opacity := 1;
+end;
+
+procedure TFRM_Cadastro_Turma.Image2MouseEnter(Sender: TObject);
+begin
+  ShadowEffect2.Enabled := true;
+end;
+
+procedure TFRM_Cadastro_Turma.Image2MouseLeave(Sender: TObject);
+begin
+  ShadowEffect2.Enabled := false;
+end;
+
+procedure TFRM_Cadastro_Turma.Image2MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect2.Opacity := 0.4;
+end;
+
+procedure TFRM_Cadastro_Turma.Image3Click(Sender: TObject);
+begin
+  Mensagens.Trocar_Usuario(FRM_Cadastro_Turma);
+end;
+
+procedure TFRM_Cadastro_Turma.Image3MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect3.Opacity := 1;
+end;
+
+procedure TFRM_Cadastro_Turma.Image3MouseEnter(Sender: TObject);
+begin
+  ShadowEffect3.Enabled := true;
+end;
+
+procedure TFRM_Cadastro_Turma.Image3MouseLeave(Sender: TObject);
+begin
+  ShadowEffect3.Enabled := false;
+end;
+
+procedure TFRM_Cadastro_Turma.Image3MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect3.Opacity := 0.4;
+end;
+
+procedure TFRM_Cadastro_Turma.Image4Click(Sender: TObject);
+begin
+  if Mensagens.Fechar_Formulario('Cadastro de Turmas') = true then
+  begin
+    FRM_Cadastro_Turma.Hide;
+    FRM_Agenda.Show;
+  end;
+end;
+
+procedure TFRM_Cadastro_Turma.Image4MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect4.Opacity := 1;
+end;
+
+procedure TFRM_Cadastro_Turma.Image4MouseEnter(Sender: TObject);
+begin
+  ShadowEffect4.Enabled := true;
+end;
+
+procedure TFRM_Cadastro_Turma.Image4MouseLeave(Sender: TObject);
+begin
+  ShadowEffect4.Enabled := false;
+end;
+
+procedure TFRM_Cadastro_Turma.Image4MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect4.Opacity := 0.4;
+end;
+
+function TFRM_Cadastro_Turma.Verificar_Campos(): Boolean;
+begin
+  if (Edit1.Text <> '') then
+  begin
+    Result := true;
+  end
+  else
+  begin
+    Result := false;
+  end;
+end;
+
+procedure TFRM_Cadastro_Turma.Image5Click(Sender: TObject);
+var
+  Codigo_Curso: String;
+begin
+  if Unit_Resultado_Pesquisa.Estado_Edicao = false then
+  begin
+    if Verificar_Campos = true then
+    begin
+      try
+        try
+          Centro_Controle.FDQuery1.SQL.Clear;
+          Centro_Controle.FDQuery1.SQL.Append
+            ('select Cod_Curso from Curso where Nome_Curso like "' +
+            ComboBox1.Selected.Text + '" order by Cod_Curso');
+          Centro_Controle.Executar_Query_Aberta('Curso');
+          Centro_Controle.FDQuery1.Prior;
+        except
+          Mensagens.Erro_Componentes_Iniciais_NAO_Carregados;
+          FRM_Cadastro_Turma.Hide;
+          FRM_Principal.Show;
+        end;
+        Centro_Controle.Cadastrar_Turmas
+          (Centro_Controle.FDQuery1.FieldByName('Cod_Curso').Value, Edit1.Text);
+        Mensagens.Cadastrado_Com_Sucesso('Turmas');
+        if Mensagens.Realizar_Novo_Cadastro('Turmas') = true then
+        begin
+          Image6Click(Image6);
+        end
+        else
+        begin
+          FRM_Cadastro_Turma.Hide;
+          FRM_Principal.Show;
+        end;
+      except
+        Mensagens.Gerar_Mensagem_Simples
+          ('Não foi possível realizar esta operação! Tente novamente mais tarde.');
+      end;
+    end
+    else
+    begin
+      Mensagens.Erro_Campos_Obrigatorios_Sem_Preenchimento;
+    end;
+  end
+  else
+  begin
+    if Verificar_Campos = true then
+    begin
+      try
+        Centro_Controle.FDQuery1.SQL.Clear;
+        Centro_Controle.FDQuery1.SQL.Append
+          ('select Cod_Curso from Curso where Nome_Curso like "' +
+          ComboBox1.Selected.Text + '"');
+        Centro_Controle.Executar_Query_Aberta('Curso');
+        Centro_Controle.FDQuery1.Prior;
+        Codigo_Curso := Centro_Controle.FDQuery1.FieldByName('Cod_Curso').Value;
+        Centro_Controle.FDQuery1.SQL.Clear;
+        Centro_Controle.FDQuery1.SQL.Append('update Turmas set Nome_Turma = "' +
+          Edit1.Text + '", Curso_Cod_Curso = ' + Codigo_Curso +
+          ' where Cod_Turma = ' + Codigo_Turma_Anterior);
+        Centro_Controle.Executar_Query('Turmas', 1);
+        Mensagens.Cadastrado_Com_Sucesso('Turma');
+        Unit_Resultado_Pesquisa.Estado_Edicao := false;
+        FRM_Cadastro_Turma.Hide;
+        FRM_Principal.Show;
+      except
+        Mensagens.Gerar_Mensagem_Simples
+          ('Não foi possível realizar esta operação! Tente novamente mais tarde.');
+      end;
+    end
+    else
+    begin
+      Mensagens.Erro_Campos_Obrigatorios_Sem_Preenchimento;
+    end;
+  end;
+end;
+
+procedure TFRM_Cadastro_Turma.Image5MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect6.Opacity := 1;
+end;
+
+procedure TFRM_Cadastro_Turma.Image5MouseEnter(Sender: TObject);
+begin
+  ShadowEffect6.Enabled := true;
+end;
+
+procedure TFRM_Cadastro_Turma.Image5MouseLeave(Sender: TObject);
+begin
+  ShadowEffect6.Enabled := false;
+end;
+
+procedure TFRM_Cadastro_Turma.Image5MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect6.Opacity := 0.6;
+end;
+
+procedure TFRM_Cadastro_Turma.Image6Click(Sender: TObject);
+begin
+  Limpar_Campos;
+end;
+
+procedure TFRM_Cadastro_Turma.Image6MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect7.Opacity := 1;
+end;
+
+procedure TFRM_Cadastro_Turma.Image6MouseEnter(Sender: TObject);
+begin
+  ShadowEffect7.Enabled := true;
+end;
+
+procedure TFRM_Cadastro_Turma.Image6MouseLeave(Sender: TObject);
+begin
+  ShadowEffect7.Enabled := false;
+end;
+
+procedure TFRM_Cadastro_Turma.Image6MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect7.Opacity := 0.6;
+end;
+
+procedure TFRM_Cadastro_Turma.Image7Click(Sender: TObject);
+begin
+  Mensagens.Encerrar_Aplicacao;
+end;
+
+procedure TFRM_Cadastro_Turma.Image7MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect5.Opacity := 1;
+end;
+
+procedure TFRM_Cadastro_Turma.Image7MouseEnter(Sender: TObject);
+begin
+  ShadowEffect5.Enabled := true;
+end;
+
+procedure TFRM_Cadastro_Turma.Image7MouseLeave(Sender: TObject);
+begin
+  ShadowEffect5.Enabled := false;
+end;
+
+procedure TFRM_Cadastro_Turma.Image7MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect5.Opacity := 0.4;
+end;
+
+procedure TFRM_Cadastro_Turma.Label3MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect2.Opacity := 1;
+end;
+
+procedure TFRM_Cadastro_Turma.Label3MouseEnter(Sender: TObject);
+begin
+  ShadowEffect2.Enabled := true;
+end;
+
+procedure TFRM_Cadastro_Turma.Label3MouseLeave(Sender: TObject);
+begin
+  ShadowEffect2.Enabled := false;
+end;
+
+procedure TFRM_Cadastro_Turma.Label3MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect2.Opacity := 0.4;
+end;
+
+procedure TFRM_Cadastro_Turma.Label4MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect3.Opacity := 1;
+end;
+
+procedure TFRM_Cadastro_Turma.Label4MouseEnter(Sender: TObject);
+begin
+  ShadowEffect3.Enabled := true;
+end;
+
+procedure TFRM_Cadastro_Turma.Label4MouseLeave(Sender: TObject);
+begin
+  ShadowEffect3.Enabled := false;
+end;
+
+procedure TFRM_Cadastro_Turma.Label4MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect3.Opacity := 0.4;
+end;
+
+procedure TFRM_Cadastro_Turma.Label5MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect4.Opacity := 1;
+end;
+
+procedure TFRM_Cadastro_Turma.Label5MouseEnter(Sender: TObject);
+begin
+  ShadowEffect4.Enabled := true;
+end;
+
+procedure TFRM_Cadastro_Turma.Label5MouseLeave(Sender: TObject);
+begin
+  ShadowEffect4.Enabled := false;
+end;
+
+procedure TFRM_Cadastro_Turma.Label5MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect4.Opacity := 0.4;
+end;
+
+procedure TFRM_Cadastro_Turma.Label6MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect6.Opacity := 1;
+end;
+
+procedure TFRM_Cadastro_Turma.Label6MouseEnter(Sender: TObject);
+begin
+  ShadowEffect6.Enabled := true;
+end;
+
+procedure TFRM_Cadastro_Turma.Label6MouseLeave(Sender: TObject);
+begin
+  ShadowEffect6.Enabled := false;
+end;
+
+procedure TFRM_Cadastro_Turma.Label6MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect3.Opacity := 0.6;
+end;
+
+procedure TFRM_Cadastro_Turma.Label7MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect7.Opacity := 1;
+end;
+
+procedure TFRM_Cadastro_Turma.Label7MouseEnter(Sender: TObject);
+begin
+  ShadowEffect7.Enabled := true;
+end;
+
+procedure TFRM_Cadastro_Turma.Label7MouseLeave(Sender: TObject);
+begin
+  ShadowEffect7.Enabled := false;
+end;
+
+procedure TFRM_Cadastro_Turma.Label7MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect7.Opacity := 0.6;
+end;
+
+procedure TFRM_Cadastro_Turma.Label8MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect5.Opacity := 1;
+end;
+
+procedure TFRM_Cadastro_Turma.Label8MouseEnter(Sender: TObject);
+begin
+  ShadowEffect5.Enabled := true;
+end;
+
+procedure TFRM_Cadastro_Turma.Label8MouseLeave(Sender: TObject);
+begin
+  ShadowEffect5.Enabled := false;
+end;
+
+procedure TFRM_Cadastro_Turma.Label8MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect5.Opacity := 0.4;
+end;
+
+procedure TFRM_Cadastro_Turma.Timer1Timer(Sender: TObject);
+begin
+  if Estado_Menu = false then
+  begin
+    if Panel2.Width < 150 then
+    begin
+      Panel2.Width := Panel2.Width + 4;
+    end
+    else
+    begin
+      Timer1.Enabled := false;
+    end;
+  end;
+  if Estado_Menu = true then
+  begin
+    if Panel2.Width > 1 then
+    begin
+      Panel2.Width := Panel2.Width - 4;
+    end
+    else
+    begin
+      Timer1.Enabled := false;
+    end;
+  end;
+end;
+
+end.

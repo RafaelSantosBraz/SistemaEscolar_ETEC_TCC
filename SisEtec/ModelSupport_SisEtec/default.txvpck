@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="c7y5jmj0itktf8rnh_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="design:view:::1vwzs9cf4tphjkdbj_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="10,10,174,151" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Cadastro_Curso.TFRM_Cadastro_Curso" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Cadastro_Curso.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::8r3d8agkotpvejf4h_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="203,1,127,151" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Agenda.TFrm_Agenda" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Agenda.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::hypdk64l8up50brdq_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="349,1,194,151" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Cadastro_Professor.TFRM_Cadastro_Professor" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Cadastro_Professor.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::xj72r2bjgn3jqqhk_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="349,171,217,151" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Cadastro_Administrador.@unitclass" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Cadastro_Administrador.TFrm_Cadastro_Administrador" />
+    </reference>
+    <reference referencedUin="design:view:::1rz1erapuup110z6t_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="130,180,213,151" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Cadastro_Coordenador.TFrm_Cadastro_Coordenador" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Cadastro_Coordenador.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::fggygr0nkvpehda2i_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="381,341,135,151" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Pesquisa.@unitclass" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Pesquisa.TFRM_Pesquisa" />
+    </reference>
+    <reference referencedUin="design:view:::fzu5xltl6wpg06kar_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="11,180,114,151" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Login.@unitclass" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Login.TFRM_Login" />
+    </reference>
+    <reference referencedUin="design:view:::0e60v2qzuwpoj6ixg_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="604,1,164,151" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Configuracoes.TFRM_Configuracoes" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Configuracoes.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::pb5gpqiixp7977he_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="806,1,325,151" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Marcacao_N_Alunos_N_Turmas_N_Cursos.@unitclass" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Marcacao_N_Alunos_N_Turmas_N_Cursos.TFrm_Marcacao_N_Alunos_N_Turmas_N_Cursos" />
+    </reference>
+    <reference referencedUin="design:view:::gptyrl6g8ypf735ns_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="604,171,186,151" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Cadastro_Eventos.@unitclass" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Cadastro_Eventos.TFrm_Cadastro_Eventos" />
+    </reference>
+    <reference referencedUin="design:view:::70m93i0c0zpyplwsm_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="604,341,148,151" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Mensagens.TMensagens" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Mensagens.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::z0dnwmoeqzp91bewg_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="192,369,183,151" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Cadastro_Turmas.@unitclass" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Cadastro_Turmas.TFRM_Cadastro_Turma" />
+    </reference>
+    <reference referencedUin="design:view:::su0o512wh0q9ade0s_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="828,171,199,151" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Marcacao_N_Alunos.TFrm_Marcacao_N_Alunos" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Marcacao_N_Alunos.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::t8056rfka1q6ubuwn_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="1169,1,203,151" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Marcacao_N_Turmas.@unitclass" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Marcacao_N_Turmas.TFrm_Marcacao_N_Turmas" />
+    </reference>
+    <reference referencedUin="design:view:::l0hv055wy1qcswqmh_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="828,341,197,151" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Resultado_Pesquisa.TFRM_Resultado_Pesquisa" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Resultado_Pesquisa.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::cdh3xggn12qj1irog_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="828,511,190,151" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Marcacao_1_Aluno.@unitclass" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Marcacao_1_Aluno.TFrm_Marcacao_1_Aluno" />
+    </reference>
+    <reference referencedUin="design:view:::bompyb43t2q0raxdf_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="619,558,200,151" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Marcacao_N_Cursos.@unitclass" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Marcacao_N_Cursos.TFrm_Marcacao_N_Cursos" />
+    </reference>
+    <reference referencedUin="design:view:::k9jzatgjmdlfg3j2s_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="83,369,100,134" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:SisEtec.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::hh1ly99an3qdlpnul_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="500,558,109,151" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:UnitAluno.TFRMAluno" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:UnitAluno.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::leog11vrg4qpws6pm_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="371,558,122,151" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Splash.TFRM_Splash" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Splash.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::r3eh85zc75qxqhqjk_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="1169,171,263,151" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Marcacao_N_Alunos_N_Turmas.@unitclass" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Marcacao_N_Alunos_N_Turmas.TFrm_Marcacao_N_Alunos_N_Turmas" />
+    </reference>
+    <reference referencedUin="design:view:::7306li0d26qjh065t_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="1169,341,206,151" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Central_Transferencia.@unitclass" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Central_Transferencia.TFRM_Central_Transferencia" />
+    </reference>
+    <reference referencedUin="design:view:::rvhhy2gkz6qpef8nh_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="172,558,194,151" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Cadastro_Disciplina.TFrm_Cadastro_Disciplina" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Cadastro_Disciplina.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::0qdudhssw7qsrlgwn_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="33,558,132,151" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Arquivos.TFrm_Arquivos" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Arquivos.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::f1renw06q8qjefzvn_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="857,681,131,151" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Controle.TCentro_Controle" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Controle.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::638ppmn5p9q0bq3jf_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="718,747,132,151" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Principal.TFRM_Principal" />
+      <reference referencedUin="delphi:e_class:src:SisEtec:Unit_Principal.@unitclass" />
+    </reference>
+  </view>
+</nodeSet>

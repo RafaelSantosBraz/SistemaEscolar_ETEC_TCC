@@ -1,0 +1,69 @@
+inherited FRM_Cadastro_Professor_Windows: TFRM_Cadastro_Professor_Windows
+  ClientHeight = 442
+  ClientWidth = 659
+  DesignerMasterStyle = 0
+  inherited ScaledLayout1: TScaledLayout
+    OriginalWidth = 659.000000000000000000
+    OriginalHeight = 442.000000000000000000
+    Size.Width = 659.000000000000000000
+    Size.Height = 442.000000000000000000
+    inherited StatusBar1: TStatusBar
+      Position.Y = 420.000000000000000000
+      Size.Width = 659.000000000000000000
+    end
+    inherited GroupBox1: TGroupBox
+      Position.X = 24.000000000000000000
+      Position.Y = 48.000000000000000000
+      Size.Width = 281.000000000000000000
+      Size.Height = 249.000000000000000000
+      inherited Edit1: TEdit
+        Size.Width = 249.000000000000000000
+      end
+      inherited ComboBox1: TComboBox
+        Size.Width = 249.000000000000000000
+      end
+      inherited Edit2: TEdit
+        Size.Width = 249.000000000000000000
+      end
+      inherited Edit3: TEdit
+        Size.Width = 249.000000000000000000
+      end
+    end
+    inherited Panel2: TPanel
+      Size.Width = 659.000000000000000000
+      inherited ScaledLayout3: TScaledLayout
+        OriginalWidth = 659.000000000000000000
+        Size.Width = 659.000000000000000000
+        inherited ScaledLayout4: TScaledLayout
+          inherited Image1: TImage
+            MultiResBitmap.LoadSize = 1
+          end
+        end
+      end
+    end
+    inherited GroupBox2: TGroupBox
+      Position.X = 24.000000000000000000
+      Position.Y = 312.000000000000000000
+      Size.Width = 281.000000000000000000
+      Size.Height = 89.000000000000000000
+      inherited Button2: TButton
+        Position.Y = 24.000000000000000000
+      end
+      inherited Button3: TButton
+        Position.X = 120.000000000000000000
+        Position.Y = 24.000000000000000000
+      end
+    end
+    inherited Panel1: TPanel
+      Size.Height = 388.000000000000000000
+      inherited ScaledLayout2: TScaledLayout
+        OriginalHeight = 388.000000000000000000
+        Size.Height = 388.000000000000000000
+      end
+    end
+  end
+  inherited Timer1: TTimer
+    Left = 72
+    Top = 0
+  end
+end

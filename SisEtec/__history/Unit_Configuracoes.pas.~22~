@@ -1,0 +1,54 @@
+unit Unit_Configuracoes;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Layouts,
+  FMX.Controls.Presentation, FMX.StdCtrls, FMX.TabControl, FMX.Effects,
+  FMX.Objects, FMX.ScrollBox, FMX.Memo;
+
+type
+  TFRM_Configuracoes = class(TForm)
+    ScaledLayout1: TScaledLayout;
+    StatusBar1: TStatusBar;
+    TabControl1: TTabControl;
+    TabItem1: TTabItem;
+    TabItem2: TTabItem;
+    Label1: TLabel;
+    Label2: TLabel;
+    GroupBox1: TGroupBox;
+    Label4: TLabel;
+    Label5: TLabel;
+    GroupBox2: TGroupBox;
+    ScaledLayout3: TScaledLayout;
+    Image1: TImage;
+    Label6: TLabel;
+    ShadowEffect1: TShadowEffect;
+    ScaledLayout2: TScaledLayout;
+    Image2: TImage;
+    Label3: TLabel;
+    ShadowEffect2: TShadowEffect;
+    ScaledLayout4: TScaledLayout;
+    Image3: TImage;
+    Label7: TLabel;
+    ShadowEffect3: TShadowEffect;
+    GroupBox3: TGroupBox;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    Memo1: TMemo;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FRM_Configuracoes: TFRM_Configuracoes;
+
+implementation
+
+{$R *.fmx}
+
+end.

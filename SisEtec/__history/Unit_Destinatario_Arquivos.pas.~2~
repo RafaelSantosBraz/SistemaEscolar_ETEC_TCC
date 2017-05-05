@@ -1,0 +1,937 @@
+unit Unit_Destinatario_Arquivos;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes,
+  System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, System.Rtti,
+  FMX.Grid, FMX.Layouts, FMX.StdCtrls, FMX.Effects, FMX.Objects,
+  FMX.Controls.Presentation, FMX.ListBox, FMX.ScrollBox, FMX.Memo, FMX.Edit,
+  FMX.DateTimeCtrls, FMX.ComboEdit;
+
+type
+  TFrm_Destinatario_Arquivos = class(TForm)
+    ScaledLayout1: TScaledLayout;
+    GroupBox1: TGroupBox;
+    Label1: TLabel;
+    ComboBox1: TComboBox;
+    Label2: TLabel;
+    Panel2: TPanel;
+    ScaledLayout3: TScaledLayout;
+    ScaledLayout10: TScaledLayout;
+    Image1: TImage;
+    ShadowEffect1: TShadowEffect;
+    Timer1: TTimer;
+    GroupBox2: TGroupBox;
+    ScaledLayout9: TScaledLayout;
+    Label12: TLabel;
+    ShadowEffect3: TShadowEffect;
+    Image7: TImage;
+    ScaledLayout5: TScaledLayout;
+    Image10: TImage;
+    Label6: TLabel;
+    ShadowEffect4: TShadowEffect;
+    ScaledLayout6: TScaledLayout;
+    Image11: TImage;
+    Label7: TLabel;
+    ShadowEffect5: TShadowEffect;
+    ScaledLayout24: TScaledLayout;
+    ShadowEffect18: TShadowEffect;
+    Image_Marcacao_On: TImage;
+    Label_Num_Notificações: TLabel;
+    ScaledLayout25: TScaledLayout;
+    Image_Eventos_Futuros: TImage;
+    ShadowEffect19: TShadowEffect;
+    Label_Num_Eventos_Futuros: TLabel;
+    StatusBar1: TStatusBar;
+    Panel1: TPanel;
+    ScaledLayout2: TScaledLayout;
+    ScaledLayout11: TScaledLayout;
+    Image9: TImage;
+    Image8: TImage;
+    Image13: TImage;
+    ScaledLayout12: TScaledLayout;
+    Image2: TImage;
+    Label8: TLabel;
+    ShadowEffect8: TShadowEffect;
+    ScaledLayout13: TScaledLayout;
+    Image3: TImage;
+    Label9: TLabel;
+    ShadowEffect9: TShadowEffect;
+    ScaledLayout14: TScaledLayout;
+    Image4: TImage;
+    Label10: TLabel;
+    ShadowEffect10: TShadowEffect;
+    ScaledLayout15: TScaledLayout;
+    Image5: TImage;
+    Label11: TLabel;
+    ShadowEffect11: TShadowEffect;
+    ScaledLayout4: TScaledLayout;
+    Image6: TImage;
+    Label3: TLabel;
+    ShadowEffect2: TShadowEffect;
+    Image12: TImage;
+    ComboEdit1: TComboEdit;
+    Label4: TLabel;
+    procedure Image6MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image6MouseEnter(Sender: TObject);
+    procedure Image6MouseLeave(Sender: TObject);
+    procedure Image6MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image4MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image4MouseEnter(Sender: TObject);
+    procedure Image4MouseLeave(Sender: TObject);
+    procedure Image4MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image3MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image3MouseEnter(Sender: TObject);
+    procedure Image3MouseLeave(Sender: TObject);
+    procedure Image3MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image2MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image2MouseEnter(Sender: TObject);
+    procedure Image2MouseLeave(Sender: TObject);
+    procedure Image2MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image5MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image5MouseEnter(Sender: TObject);
+    procedure Image5MouseLeave(Sender: TObject);
+    procedure Image5MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image1MouseEnter(Sender: TObject);
+    procedure Image1MouseLeave(Sender: TObject);
+    procedure Image1MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label8MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label8MouseEnter(Sender: TObject);
+    procedure Label8MouseLeave(Sender: TObject);
+    procedure Label8MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label9MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label9MouseEnter(Sender: TObject);
+    procedure Label9MouseLeave(Sender: TObject);
+    procedure Label9MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label10MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label10MouseEnter(Sender: TObject);
+    procedure Label10MouseLeave(Sender: TObject);
+    procedure Label10MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label3MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label3MouseEnter(Sender: TObject);
+    procedure Label3MouseLeave(Sender: TObject);
+    procedure Label3MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label11MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label11MouseEnter(Sender: TObject);
+    procedure Label11MouseLeave(Sender: TObject);
+    procedure Label11MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image1Click(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+    procedure Image3Click(Sender: TObject);
+    procedure Image4Click(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
+    procedure Image6Click(Sender: TObject);
+    procedure Image7MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image7MouseEnter(Sender: TObject);
+    procedure Image7MouseLeave(Sender: TObject);
+    procedure Image7MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure FormShow(Sender: TObject);
+    procedure Image7Click(Sender: TObject);
+    procedure Image5Click(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure Image10MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image10MouseEnter(Sender: TObject);
+    procedure Image10MouseLeave(Sender: TObject);
+    procedure Image10MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image10Click(Sender: TObject);
+    procedure Image11MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image11MouseEnter(Sender: TObject);
+    procedure Image11MouseLeave(Sender: TObject);
+    procedure Image11MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image11Click(Sender: TObject);
+    procedure Mostra_Mensagem;
+    procedure FormHide(Sender: TObject);
+    procedure Image_Eventos_FuturosMouseDown(Sender: TObject;
+      Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+    procedure Image_Eventos_FuturosMouseEnter(Sender: TObject);
+    procedure Image_Eventos_FuturosMouseLeave(Sender: TObject);
+    procedure Image_Eventos_FuturosMouseUp(Sender: TObject;
+      Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+    procedure Image_Marcacao_OnMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image_Marcacao_OnMouseEnter(Sender: TObject);
+    procedure Image_Marcacao_OnMouseLeave(Sender: TObject);
+    procedure Image_Marcacao_OnMouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image_Marcacao_OnClick(Sender: TObject);
+    procedure Cadastra_Arquivos;
+    procedure ComboBox1Change(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    // Cont: Integer;
+    Alunos, Turmas, Cursos, Professores, Coordenadores, Administradores,
+      Administradores_S: String;
+  end;
+
+var
+  Frm_Destinatario_Arquivos: TFrm_Destinatario_Arquivos;
+  Estado_Menu: Boolean;
+  Nome_Usuario_Autor: String;
+  Assunto_Evento, Descricao_Evento, Data_Marcacao_Evento, Data_Termino_Evento,
+    Hora_Inicio_Evento, Hora_Termino_Evento, Autor, Exclui_ou_Edita: String;
+
+implementation
+
+{$R *.fmx}
+
+uses Unit_Marcacao_N_Alunos_N_Turmas_N_Cursos, Unit_Controle, Unit_Mensagens,
+  Unit_Arquivos, Unit_Principal, Unit_Agenda, Unit_Marcacao_Professores,
+  Unit_Marcacao_Coordenadores, Unit_Marcacao_Administradores,
+  Unit_Marcacao_Administradores_S;
+
+procedure TFrm_Destinatario_Arquivos.Cadastra_Arquivos;
+begin
+  Centro_Controle.Cadastrar_Dados_Arquivo(Unit_Arquivos.Nome_Final_Arquivo,
+    Unit_Arquivos.Extensao_Arquivo, Unit_Arquivos.Tipo_Arquivo, ComboEdit1.Text,
+    Unit_Arquivos.Codigo_Proprietario_Arquivo,
+    Unit_Arquivos.Tipo_Proprietario_Arquivo, Centro_Controle.Nome_Usuario);
+end;
+
+procedure TFrm_Destinatario_Arquivos.ComboBox1Change(Sender: TObject);
+begin
+  ComboEdit1.SetFocus;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Mostra_Mensagem;
+begin
+  ShowMessage('Upload Pessoal do Arquivo: ' + Unit_Arquivos.Nome_Final_Arquivo +
+    ' realizado com Sucesso.');
+  Frm_Arquivos.Show;
+  Frm_Destinatario_Arquivos.Hide;
+end;
+
+procedure TFrm_Destinatario_Arquivos.FormCloseQuery(Sender: TObject;
+  var CanClose: Boolean);
+begin
+  if Mensagens.Fechar_Formulario('Cadastro de Eventos') = False then
+  begin
+    CanClose := False;
+  end
+  else
+  begin
+    Frm_Agenda.Show;
+  end;
+end;
+
+procedure TFrm_Destinatario_Arquivos.FormHide(Sender: TObject);
+begin
+  // FRM_Principal.Verifica_Notificacoes;
+  ComboBox1.ItemIndex := -1;
+end;
+
+procedure TFrm_Destinatario_Arquivos.FormShow(Sender: TObject);
+var
+  cont: Integer;
+begin
+  Estado_Menu := True;
+  ComboEdit1.Text := '';
+  ComboBox1.SetFocus;
+  Label1.Text := 'Autor ' + Centro_Controle.Nome_Usuario;
+  try
+    Centro_Controle.FDQuery1.SQL.Clear;
+    Centro_Controle.FDQuery1.SQL.Append
+      ('select Nome_Disciplina from Disciplina order by Cod_Disciplina');
+    Centro_Controle.Executar_Query_Aberta('Disciplina');
+    Centro_Controle.FDQuery1.Prior;
+    if (Centro_Controle.FDQuery1.FieldByName('Nome_Disciplina').Value <> Null)
+    then
+    begin
+      ComboEdit1.Items.Append('Referente à: ' +
+        Centro_Controle.FDQuery1.FieldByName('Nome_Disciplina').Value);
+      for cont := 1 to (Centro_Controle.FDQuery1.RecordCount - 1) do
+      begin
+        Centro_Controle.FDQuery1.Next;
+        ComboEdit1.Items.Append('Referente à: ' +
+          Centro_Controle.FDQuery1.FieldByName('Nome_Disciplina').Value);
+      end;
+    end
+    else
+    begin
+      Mensagens.Gerar_Mensagem_Simples('Nenhuma Disciplina encontrada como Item'
+        + ' de Pesquisa');
+    end;
+  except
+    Mensagens.Erro_Componentes_Iniciais_NAO_Carregados;
+    FRM_Principal.Show;
+    Frm_Arquivos.Hide;
+  end;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image10Click(Sender: TObject);
+
+var
+  Data: TDateTime;
+  Agenda_Cod_Agenda, Evento_Cod_Evento, Notificacoes: String;
+begin
+  Arquivos := 'sim';
+  if (ComboBox1.ItemIndex = -1) or (ComboEdit1.Text = '') then
+  begin
+    Mensagens.Erro_Campos_Obrigatorios_Sem_Preenchimento;
+    ComboBox1.SetFocus;
+  end
+  else if (Length(ComboEdit1.Text) > 40) then
+  begin
+    ShowMessage('Texto excede o tamanho Máximo do Dado.');
+  end
+  else
+  begin
+    // Data := StrToDate(DateEdit1.Text);
+    // ShowMessage(Nome_Usuario_Autor);
+
+    // Marcacção Alunos
+    if (ComboBox1.ItemIndex = 0) then
+    begin
+      Frm_Marcacao_N_Alunos_N_Turmas_N_Cursos.Show;
+      Frm_Destinatario_Arquivos.Hide;
+    end;
+    // Marcacção Professores
+    if (ComboBox1.ItemIndex = 1) then
+    begin
+      Frm_Marcacao_Professores.Show;
+      Frm_Destinatario_Arquivos.Hide;
+    end;
+    // Marcacção Coordenadores
+    if (ComboBox1.ItemIndex = 2) then
+    begin
+      Frm_Marcacao_Coordenadores.Show;
+      Frm_Destinatario_Arquivos.Hide;
+    end;
+    // Marcacção Administradores
+    if (ComboBox1.ItemIndex = 3) then
+    begin
+      Frm_Marcacao_Administradores.Show;
+      Frm_Destinatario_Arquivos.Hide;
+    end;
+    // Marcacção Administradores S
+    if (ComboBox1.ItemIndex = 4) then
+    begin
+      Frm_Marcacao_Administradores_S.Show;
+      Frm_Destinatario_Arquivos.Hide;
+    end;
+    // Form vários cursos
+    { if (ComboBox1.ItemIndex = 5) then
+      begin
+      Frm_Marcacao_N_Cursos.Show;
+      Frm_Destinatario_Arquivos.Hide;
+      end; }
+    if (ComboBox1.ItemIndex = 5) then
+    begin
+      Frm_Arquivos.Selects;
+      if (Unit_Controle.Tipo_Usuario = 1) then
+      begin
+        try
+          Centro_Controle.FDQuery1.SQL.Clear;
+          Centro_Controle.FDQuery1.SQL.Append
+            ('select Agenda_Cod_Agenda from Aluno where Nome_Aluno like "' +
+            Centro_Controle.Nome_Usuario + '"');
+          Centro_Controle.Executar_Query_Aberta('Aluno');
+          Centro_Controle.FDQuery1.Last;
+          Agenda_Cod_Agenda := Centro_Controle.FDQuery1.FieldByName
+            ('Agenda_Cod_Agenda').Value;
+          Tipo_Proprietario_Arquivo := '1';
+          Cadastra_Arquivos;
+          Mostra_Mensagem;
+        except
+          Mensagens.Erro_Envio_Arquivo;
+
+          Frm_Agenda.Show;
+          Frm_Destinatario_Arquivos.Hide;
+        end;
+      end;
+      if (Unit_Controle.Tipo_Usuario = 2) then
+      begin
+        try
+          Centro_Controle.FDQuery1.SQL.Clear;
+          Centro_Controle.FDQuery1.SQL.Append
+            ('select Agenda_Cod_Agenda from Professor where Nome_Professor like "'
+            + Centro_Controle.Nome_Usuario + '"');
+          Centro_Controle.Executar_Query_Aberta('Professor');
+          Centro_Controle.FDQuery1.Last;
+          Agenda_Cod_Agenda := Centro_Controle.FDQuery1.FieldByName
+            ('Agenda_Cod_Agenda').Value;
+          Tipo_Proprietario_Arquivo := '2';
+          Cadastra_Arquivos;
+          Mostra_Mensagem;
+        except
+          Mensagens.Erro_Envio_Arquivo;
+          Frm_Agenda.Show;
+          Frm_Destinatario_Arquivos.Hide;
+        end;
+      end;
+      if (Unit_Controle.Tipo_Usuario = 3) then
+      begin
+        try
+          Centro_Controle.FDQuery1.SQL.Clear;
+          Centro_Controle.FDQuery1.SQL.Append
+            ('select Agenda_Cod_Agenda from Coordenador where Nome_Coordenador like "'
+            + Centro_Controle.Nome_Usuario + '"');
+          Centro_Controle.Executar_Query_Aberta('Coordenador');
+          Centro_Controle.FDQuery1.Last;
+          Agenda_Cod_Agenda := Centro_Controle.FDQuery1.FieldByName
+            ('Agenda_Cod_Agenda').Value;
+
+          Tipo_Proprietario_Arquivo := '3';
+          Cadastra_Arquivos;
+          Mostra_Mensagem;
+        except
+          Mensagens.Erro_Envio_Arquivo;
+          Frm_Agenda.Show;
+          Frm_Destinatario_Arquivos.Hide;
+        end;
+      end;
+      if (Unit_Controle.Tipo_Usuario = 4) then
+      begin
+        try
+          Centro_Controle.FDQuery1.SQL.Clear;
+          Centro_Controle.FDQuery1.SQL.Append
+            ('select Agenda_Cod_Agenda from Administrador where Nome_Administrador like "'
+            + Centro_Controle.Nome_Usuario + '"');
+          Centro_Controle.Executar_Query_Aberta('Administrador');
+          Centro_Controle.FDQuery1.Last;
+          Agenda_Cod_Agenda := Centro_Controle.FDQuery1.FieldByName
+            ('Agenda_Cod_Agenda').Value;
+          Tipo_Proprietario_Arquivo := '4';
+          Cadastra_Arquivos;
+          Mostra_Mensagem;
+        except
+          Mensagens.Erro_Envio_Arquivo;
+          Frm_Agenda.Show;
+          Frm_Destinatario_Arquivos.Hide;
+        end;
+      end;
+      if (Unit_Controle.Tipo_Usuario = 5) then
+      begin
+        try
+          Centro_Controle.FDQuery1.SQL.Clear;
+          Centro_Controle.FDQuery1.SQL.Append
+            ('select Agenda_Cod_Agenda from Administrador_S where Nome_Administrador_S like "'
+            + Centro_Controle.Nome_Usuario + '"');
+          Centro_Controle.Executar_Query_Aberta('Administrador_S');
+          Centro_Controle.FDQuery1.Last;
+          Agenda_Cod_Agenda := Centro_Controle.FDQuery1.FieldByName
+            ('Agenda_Cod_Agenda').Value;
+          Tipo_Proprietario_Arquivo := '5';
+          Cadastra_Arquivos;
+          Mostra_Mensagem;
+        except
+          Mensagens.Erro_Envio_Arquivo;
+          Frm_Agenda.Show;
+          Frm_Destinatario_Arquivos.Hide;
+        end;
+      end;
+      Unit_Arquivos.Arquivos := 'não';
+      try
+        Unit_Central_Transferencia.Mensagem := 'Administrador(es): ' +
+          Frm_Cadastro_Eventos.Administradores +
+          ' recebeu(ram) com sucesso o Arquivo: ' +
+          Unit_Arquivos.Nome_Final_Arquivo + '.';
+        Centro_Controle.FDQuery1.SQL.Clear;
+        Centro_Controle.FDQuery1.SQL.Append
+          ('select Cod_Arquivo from Arquivos order by Cod_Arquivo');
+        Centro_Controle.Executar_Query_Aberta('Arquivos');
+        Centro_Controle.FDQuery1.Last;
+        FRM_central_Transferencia.Ativar_Central_Transferencia_ENVIAR_ARQUIVO
+          (Frm_Arquivos, Centro_Controle.FDQuery1.FieldByName('Cod_Arquivo')
+          .Value, Unit_Arquivos.Nome_Arquivo, Unit_Arquivos.Nome_Final_Arquivo);
+        Unit_Arquivos.Arquivos := 'não';
+      except
+        Mensagens.Gerar_Mensagem_Simples
+          ('Erro ao enviar o arquivo! Tente novamente mais tarde.');
+      end;
+    end;
+  end;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image10MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect4.Opacity := 1;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image10MouseEnter(Sender: TObject);
+begin
+  ShadowEffect4.Enabled := True;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image10MouseLeave(Sender: TObject);
+begin
+  ShadowEffect4.Enabled := False;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image10MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect4.Opacity := 0.6;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image11Click(Sender: TObject);
+begin
+  ComboBox1.ItemIndex := -1;
+  ComboEdit1.Text := '';
+  ComboBox1.SetFocus;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image11MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect5.Opacity := 1;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image11MouseEnter(Sender: TObject);
+begin
+  ShadowEffect5.Enabled := True;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image11MouseLeave(Sender: TObject);
+begin
+  ShadowEffect5.Enabled := False;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image11MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect5.Opacity := 0.6;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image1Click(Sender: TObject);
+begin
+  if Estado_Menu = True then
+  begin
+    Estado_Menu := False;
+    Timer1.Enabled := True;
+  end
+  else
+  begin
+    Estado_Menu := True;
+    Timer1.Enabled := True;
+  end;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image1MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect1.Opacity := 1;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image1MouseEnter(Sender: TObject);
+begin
+  ShadowEffect1.Enabled := True;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image1MouseLeave(Sender: TObject);
+begin
+  ShadowEffect1.Enabled := False;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image1MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect1.Opacity := 0.4;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image2Click(Sender: TObject);
+begin
+  if Mensagens.Fechar_Formulario('Cadastro de Eventos') = True then
+  begin
+    Frm_Destinatario_Arquivos.Hide;
+    FRM_Principal.Show;
+  end;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image2MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect8.Opacity := 1;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image2MouseEnter(Sender: TObject);
+begin
+  ShadowEffect8.Enabled := True;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image2MouseLeave(Sender: TObject);
+begin
+  ShadowEffect8.Enabled := False;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image2MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect8.Opacity := 0.4;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image3Click(Sender: TObject);
+begin
+  Mensagens.Trocar_Usuario(Frm_Destinatario_Arquivos);
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image3MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect9.Opacity := 1;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image3MouseEnter(Sender: TObject);
+begin
+  ShadowEffect9.Enabled := True;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image3MouseLeave(Sender: TObject);
+begin
+  ShadowEffect9.Enabled := False;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image3MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect9.Opacity := 0.4;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image4Click(Sender: TObject);
+begin
+  if Mensagens.Fechar_Formulario('Cadastro de Eventos') = True then
+  begin
+    Frm_Destinatario_Arquivos.Hide;
+    Frm_Arquivos.Show;
+  end;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image4MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect10.Opacity := 1;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image4MouseEnter(Sender: TObject);
+begin
+  ShadowEffect10.Enabled := True;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image4MouseLeave(Sender: TObject);
+begin
+  ShadowEffect10.Enabled := False;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image4MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect10.Opacity := 0.4;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image5Click(Sender: TObject);
+begin
+  Mensagens.Encerrar_Aplicacao;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image5MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect11.Opacity := 1;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image5MouseEnter(Sender: TObject);
+begin
+  ShadowEffect11.Enabled := True;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image5MouseLeave(Sender: TObject);
+begin
+  ShadowEffect11.Enabled := False;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image5MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect11.Opacity := 0.4;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image6Click(Sender: TObject);
+begin
+  if Mensagens.Fechar_Formulario('Cadastro de Eventos') = True then
+  begin
+    Frm_Destinatario_Arquivos.Hide;
+    Frm_Agenda.Show;
+  end;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image6MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect2.Opacity := 1;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image6MouseEnter(Sender: TObject);
+begin
+  ShadowEffect2.Enabled := True;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image6MouseLeave(Sender: TObject);
+begin
+  ShadowEffect2.Enabled := False;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image6MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect2.Opacity := 0.4;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image7Click(Sender: TObject);
+begin
+  if Mensagens.Fechar_Formulario('Cadastro Eventos') = True then
+  begin
+    Frm_Destinatario_Arquivos.Hide;
+    Frm_Arquivos.Show;
+  end;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image7MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect3.Opacity := 1;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image7MouseEnter(Sender: TObject);
+begin
+  ShadowEffect3.Enabled := True;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image7MouseLeave(Sender: TObject);
+begin
+  ShadowEffect3.Enabled := False;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image7MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect3.Opacity := 0.6;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image_Eventos_FuturosMouseDown
+  (Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect19.Opacity := 0.6;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image_Eventos_FuturosMouseEnter
+  (Sender: TObject);
+begin
+  ShadowEffect19.Enabled := True;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image_Eventos_FuturosMouseLeave
+  (Sender: TObject);
+begin
+  ShadowEffect19.Enabled := False;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image_Eventos_FuturosMouseUp
+  (Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect19.Opacity := 0.4;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image_Marcacao_OnClick(Sender: TObject);
+begin
+  if Mensagens.Fechar_Formulario('Destinatário dos Arquivos') = True then
+  begin
+    Frm_Agenda.Show;
+    Frm_Destinatario_Arquivos.Hide
+  end;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image_Marcacao_OnMouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect18.Opacity := 0.6;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image_Marcacao_OnMouseEnter
+  (Sender: TObject);
+begin
+  ShadowEffect18.Enabled := True;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image_Marcacao_OnMouseLeave
+  (Sender: TObject);
+begin
+  ShadowEffect18.Enabled := False;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Image_Marcacao_OnMouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect18.Opacity := 0.6;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Label10MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect10.Opacity := 1;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Label10MouseEnter(Sender: TObject);
+begin
+  ShadowEffect10.Enabled := True;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Label10MouseLeave(Sender: TObject);
+begin
+  ShadowEffect10.Enabled := False;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Label10MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect10.Opacity := 0.4;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Label11MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect11.Opacity := 1;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Label11MouseEnter(Sender: TObject);
+begin
+  ShadowEffect11.Enabled := True;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Label11MouseLeave(Sender: TObject);
+begin
+  ShadowEffect11.Enabled := False;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Label11MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect11.Opacity := 0.4;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Label3MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect2.Opacity := 1;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Label3MouseEnter(Sender: TObject);
+begin
+  ShadowEffect2.Enabled := True;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Label3MouseLeave(Sender: TObject);
+begin
+  ShadowEffect2.Enabled := False;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Label3MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect2.Opacity := 0.4;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Label8MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect8.Opacity := 1;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Label8MouseEnter(Sender: TObject);
+begin
+  ShadowEffect8.Enabled := True;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Label8MouseLeave(Sender: TObject);
+begin
+  ShadowEffect8.Enabled := False;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Label8MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect8.Opacity := 0.4;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Label9MouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect9.Opacity := 1;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Label9MouseEnter(Sender: TObject);
+begin
+  ShadowEffect9.Enabled := True;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Label9MouseLeave(Sender: TObject);
+begin
+  ShadowEffect9.Enabled := False;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Label9MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect9.Opacity := 0.4;
+end;
+
+procedure TFrm_Destinatario_Arquivos.Timer1Timer(Sender: TObject);
+begin
+  if Estado_Menu = False then
+  begin
+    if Panel1.Width < 150 then
+    begin
+      Panel1.Width := Panel1.Width + 4;
+    end
+    else
+    begin
+      Timer1.Enabled := False;
+    end;
+  end;
+  if Estado_Menu = True then
+  begin
+    if Panel1.Width > 1 then
+    begin
+      Panel1.Width := Panel1.Width - 4;
+    end
+    else
+    begin
+      Timer1.Enabled := False;
+    end;
+  end;
+
+end;
+
+end.

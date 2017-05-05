@@ -1,0 +1,1016 @@
+unit Unit_Principal;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes,
+  System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
+  FMX.Objects, FMX.Edit, FMX.ListBox, FMX.Controls.Presentation, FMX.Layouts,
+  FMX.Ani, FMX.Effects, FMX.Filter.Effects, FMX.ExtCtrls;
+
+type
+  TFRM_Principal = class(TForm)
+    ScaledLayout1: TScaledLayout;
+    StatusBar1: TStatusBar;
+    Panel2: TPanel;
+    ScaledLayout3: TScaledLayout;
+    Panel1: TPanel;
+    ScaledLayout2: TScaledLayout;
+    Timer2: TTimer;
+    Panel3: TPanel;
+    ScaledLayout4: TScaledLayout;
+    ScaledLayout5: TScaledLayout;
+    Image8: TImage;
+    ShadowEffect1: TShadowEffect;
+    ScaledLayout6: TScaledLayout;
+    Image9: TImage;
+    ShadowEffect2: TShadowEffect;
+    ScaledLayout7: TScaledLayout;
+    Image1: TImage;
+    ShadowEffect3: TShadowEffect;
+    Image5: TImage;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    ScaledLayout8: TScaledLayout;
+    ShadowEffect4: TShadowEffect;
+    Image2: TImage;
+    Label4: TLabel;
+    ScaledLayout9: TScaledLayout;
+    ShadowEffect5: TShadowEffect;
+    Label5: TLabel;
+    Image3: TImage;
+    ScaledLayout10: TScaledLayout;
+    ShadowEffect6: TShadowEffect;
+    Label6: TLabel;
+    Image4: TImage;
+    Panel4: TPanel;
+    ScaledLayout11: TScaledLayout;
+    ScaledLayout12: TScaledLayout;
+    ShadowEffect7: TShadowEffect;
+    Image7: TImage;
+    Label7: TLabel;
+    ScaledLayout13: TScaledLayout;
+    ShadowEffect8: TShadowEffect;
+    Label8: TLabel;
+    Image10: TImage;
+    ScaledLayout14: TScaledLayout;
+    ShadowEffect9: TShadowEffect;
+    Label9: TLabel;
+    Image11: TImage;
+    ScaledLayout15: TScaledLayout;
+    ShadowEffect10: TShadowEffect;
+    Label10: TLabel;
+    Image12: TImage;
+    Image13: TImage;
+    Image6: TImage;
+    ScaledLayout16: TScaledLayout;
+    ShadowEffect11: TShadowEffect;
+    Label11: TLabel;
+    Image14: TImage;
+    Panel5: TPanel;
+    ScaledLayout17: TScaledLayout;
+    Image15: TImage;
+    ScaledLayout18: TScaledLayout;
+    ShadowEffect12: TShadowEffect;
+    Image16: TImage;
+    Label12: TLabel;
+    ScaledLayout19: TScaledLayout;
+    ShadowEffect13: TShadowEffect;
+    Label13: TLabel;
+    Image17: TImage;
+    ScaledLayout20: TScaledLayout;
+    ShadowEffect14: TShadowEffect;
+    Label14: TLabel;
+    Image18: TImage;
+    Panel6: TPanel;
+    ScaledLayout21: TScaledLayout;
+    ShadowEffect15: TShadowEffect;
+    Label15: TLabel;
+    Image19: TImage;
+    Image20: TImage;
+    ScaledLayout22: TScaledLayout;
+    ShadowEffect16: TShadowEffect;
+    Label16: TLabel;
+    Image21: TImage;
+    ScaledLayout23: TScaledLayout;
+    ShadowEffect17: TShadowEffect;
+    Label17: TLabel;
+    Image22: TImage;
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure Button1Click(Sender: TObject);
+    procedure Timer2Timer(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Image8Click(Sender: TObject);
+    procedure Image8MouseEnter(Sender: TObject);
+    procedure Image8MouseLeave(Sender: TObject);
+    procedure Image9MouseEnter(Sender: TObject);
+    procedure Image9MouseLeave(Sender: TObject);
+    procedure Image1MouseEnter(Sender: TObject);
+    procedure Image1MouseLeave(Sender: TObject);
+    procedure Image2MouseEnter(Sender: TObject);
+    procedure Image2MouseLeave(Sender: TObject);
+    procedure Image3MouseEnter(Sender: TObject);
+    procedure Image3MouseLeave(Sender: TObject);
+    procedure Image4MouseEnter(Sender: TObject);
+    procedure Image4MouseLeave(Sender: TObject);
+    procedure Image7MouseEnter(Sender: TObject);
+    procedure Image7MouseLeave(Sender: TObject);
+    procedure Image10MouseEnter(Sender: TObject);
+    procedure Image10MouseLeave(Sender: TObject);
+    procedure Image11MouseEnter(Sender: TObject);
+    procedure Image11MouseLeave(Sender: TObject);
+    procedure Image12MouseEnter(Sender: TObject);
+    procedure Image12MouseLeave(Sender: TObject);
+    procedure Image14MouseEnter(Sender: TObject);
+    procedure Image14MouseLeave(Sender: TObject);
+    procedure Image9Click(Sender: TObject);
+    procedure Image16MouseEnter(Sender: TObject);
+    procedure Image16MouseLeave(Sender: TObject);
+    procedure Image17MouseEnter(Sender: TObject);
+    procedure Image17MouseLeave(Sender: TObject);
+    procedure Image1Click(Sender: TObject);
+    function Fechar_Menus(): Boolean;
+    procedure Panel6Click(Sender: TObject);
+    procedure StatusBar1Click(Sender: TObject);
+    procedure Panel2Click(Sender: TObject);
+    procedure Image8MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image8MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image9MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image9MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image1MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label1Click(Sender: TObject);
+    procedure Label1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label1MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label2Click(Sender: TObject);
+    procedure Label3Click(Sender: TObject);
+    procedure Label2MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label2MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label3MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label3MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image2MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image2MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image3MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image3MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image4MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image4MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label4MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label4MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label5MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label5MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label6MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Label6MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image4Click(Sender: TObject);
+    procedure Image7MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image7MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image10MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image10MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image11MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image11MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image12MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image12MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image14MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image14MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image16MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image16MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image17MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image17MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image10Click(Sender: TObject);
+    procedure Image7Click(Sender: TObject);
+    procedure Image12Click(Sender: TObject);
+    procedure Image16Click(Sender: TObject);
+    procedure Image11Click(Sender: TObject);
+    procedure Image3Click(Sender: TObject);
+    procedure Image19MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image19MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image19MouseEnter(Sender: TObject);
+    procedure Image19MouseLeave(Sender: TObject);
+    procedure Image21MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image21MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image21MouseEnter(Sender: TObject);
+    procedure Image21MouseLeave(Sender: TObject);
+    procedure Image22MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image22MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure Image22MouseEnter(Sender: TObject);
+    procedure Image22MouseLeave(Sender: TObject);
+    procedure Image19Click(Sender: TObject);
+    procedure Image22Click(Sender: TObject);
+    procedure Image21Click(Sender: TObject);
+    procedure Image17Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure Image14Click(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FRM_Principal: TFRM_Principal;
+  Estado_Menu_Opcoes, Estado_Menu_Usuarios, Estado_Menu_Ferramentas: Boolean;
+  Num_Painel, Num_Painel_Auxiliar: Integer;
+
+implementation
+
+{$R *.fmx}
+
+uses Unit_Mensagens, Unit_Controle, Unit_Cadastro_Professor, Unit_Login,
+  Unit_Cadastro_Administrador, Unit_Cadastro_Coordenador, Unit_Arquivos,
+  UnitAluno, Unit_Cadastro_Curso, Unit_Cadastro_Disciplina,
+  Unit_Cadastro_Turmas, Unit_Agenda, Unit_Pesquisa;
+
+function TFRM_Principal.Fechar_Menus(): Boolean;
+begin
+  if Estado_Menu_Opcoes = true then
+  begin
+    Num_Painel_Auxiliar := 1;
+  end;
+  if Estado_Menu_Usuarios = true then
+  begin
+    Num_Painel_Auxiliar := 2;
+  end;
+  if Estado_Menu_Ferramentas = true then
+  begin
+    Num_Painel_Auxiliar := 3;
+  end;
+  if (Estado_Menu_Opcoes = false) and (Estado_Menu_Usuarios = false) and
+    (Estado_Menu_Ferramentas = false) then
+  begin
+    Result := false;
+  end
+  else
+  begin
+    Result := true;
+  end;
+end;
+
+procedure TFRM_Principal.Button1Click(Sender: TObject);
+begin
+  Estado_Menu_Opcoes := false;
+  Panel3.Visible := true;
+  Timer2.Enabled := true;
+end;
+
+procedure TFRM_Principal.Button2Click(Sender: TObject);
+begin
+  Estado_Menu_Opcoes := true;
+  Timer2.Enabled := true;
+end;
+
+procedure TFRM_Principal.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+begin
+  Mensagens.Encerrar_Aplicacao;
+  CanClose := false;
+end;
+
+procedure TFRM_Principal.FormShow(Sender: TObject);
+begin
+  Centro_Controle.Reset_Menus;
+end;
+
+procedure TFRM_Principal.Image10Click(Sender: TObject);
+begin
+  FRM_Principal.Hide;
+  FRM_Cadastro_Professor.Show;
+end;
+
+procedure TFRM_Principal.Image10MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect8.Opacity := 1;
+end;
+
+procedure TFRM_Principal.Image10MouseEnter(Sender: TObject);
+begin
+  ShadowEffect8.Enabled := true;
+end;
+
+procedure TFRM_Principal.Image10MouseLeave(Sender: TObject);
+begin
+  ShadowEffect8.Enabled := false;
+end;
+
+procedure TFRM_Principal.Image10MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect8.Opacity := 0.6;
+end;
+
+procedure TFRM_Principal.Image11Click(Sender: TObject);
+begin
+  FRM_Principal.Hide;
+  FRMAluno.Show;
+end;
+
+procedure TFRM_Principal.Image11MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect9.Opacity := 1;
+end;
+
+procedure TFRM_Principal.Image11MouseEnter(Sender: TObject);
+begin
+  ShadowEffect9.Enabled := true;
+end;
+
+procedure TFRM_Principal.Image11MouseLeave(Sender: TObject);
+begin
+  ShadowEffect9.Enabled := false;
+end;
+
+procedure TFRM_Principal.Image11MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect9.Opacity := 0.6;
+end;
+
+procedure TFRM_Principal.Image12Click(Sender: TObject);
+begin
+  FRM_Principal.Hide;
+  FRM_Cadastro_Coordenador.Show;
+end;
+
+procedure TFRM_Principal.Image12MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect10.Opacity := 1;
+end;
+
+procedure TFRM_Principal.Image12MouseEnter(Sender: TObject);
+begin
+  ShadowEffect10.Enabled := true;
+end;
+
+procedure TFRM_Principal.Image12MouseLeave(Sender: TObject);
+begin
+  ShadowEffect10.Enabled := false;
+end;
+
+procedure TFRM_Principal.Image12MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect10.Opacity := 0.6;
+end;
+
+procedure TFRM_Principal.Image14Click(Sender: TObject);
+begin
+  FRM_Principal.Hide;
+  FRM_Pesquisa.Show;
+end;
+
+procedure TFRM_Principal.Image14MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect11.Opacity := 1;
+end;
+
+procedure TFRM_Principal.Image14MouseEnter(Sender: TObject);
+begin
+  ShadowEffect11.Enabled := true;
+end;
+
+procedure TFRM_Principal.Image14MouseLeave(Sender: TObject);
+begin
+  ShadowEffect11.Enabled := false;
+end;
+
+procedure TFRM_Principal.Image14MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect11.Opacity := 0.6;
+end;
+
+procedure TFRM_Principal.Image16Click(Sender: TObject);
+begin
+  FRM_Principal.Hide;
+  FRM_Arquivos.Show;
+end;
+
+procedure TFRM_Principal.Image16MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect12.Opacity := 1;
+end;
+
+procedure TFRM_Principal.Image16MouseEnter(Sender: TObject);
+begin
+  ShadowEffect12.Enabled := true;
+end;
+
+procedure TFRM_Principal.Image16MouseLeave(Sender: TObject);
+begin
+  ShadowEffect12.Enabled := false;
+end;
+
+procedure TFRM_Principal.Image16MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect12.Opacity := 0.6;
+end;
+
+procedure TFRM_Principal.Image17Click(Sender: TObject);
+begin
+  FRM_Principal.Hide;
+  FRM_agenda.Show;
+end;
+
+procedure TFRM_Principal.Image17MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect13.Opacity := 1;
+end;
+
+procedure TFRM_Principal.Image17MouseEnter(Sender: TObject);
+begin
+  ShadowEffect13.Enabled := true;
+end;
+
+procedure TFRM_Principal.Image17MouseLeave(Sender: TObject);
+begin
+  ShadowEffect13.Enabled := false;
+end;
+
+procedure TFRM_Principal.Image17MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect13.Opacity := 0.6;
+end;
+
+procedure TFRM_Principal.Image1Click(Sender: TObject);
+begin
+  if Fechar_Menus = true then
+  begin
+    Num_Painel := Num_Painel_Auxiliar;
+    Timer2.Enabled := true;
+  end
+  else
+  begin
+    Num_Painel := 3;
+    Timer2.Enabled := true;
+  end;
+end;
+
+procedure TFRM_Principal.Image1MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect3.Opacity := 1;
+end;
+
+procedure TFRM_Principal.Image1MouseEnter(Sender: TObject);
+begin
+  ShadowEffect3.Enabled := true;
+end;
+
+procedure TFRM_Principal.Image1MouseLeave(Sender: TObject);
+begin
+  ShadowEffect3.Enabled := false;
+end;
+
+procedure TFRM_Principal.Image1MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect3.Opacity := 0.6;
+end;
+
+procedure TFRM_Principal.Image2MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect4.Opacity := 1;
+end;
+
+procedure TFRM_Principal.Image2MouseEnter(Sender: TObject);
+begin
+  ShadowEffect4.Enabled := true;
+end;
+
+procedure TFRM_Principal.Image2MouseLeave(Sender: TObject);
+begin
+  ShadowEffect4.Enabled := false;
+end;
+
+procedure TFRM_Principal.Image2MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect4.Opacity := 0.6;
+end;
+
+procedure TFRM_Principal.Image3Click(Sender: TObject);
+begin
+  Mensagens.Trocar_Usuario(FRM_Principal);
+end;
+
+procedure TFRM_Principal.Image3MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect5.Opacity := 1;
+end;
+
+procedure TFRM_Principal.Image3MouseEnter(Sender: TObject);
+begin
+  ShadowEffect5.Enabled := true;
+end;
+
+procedure TFRM_Principal.Image3MouseLeave(Sender: TObject);
+begin
+  ShadowEffect5.Enabled := false;
+end;
+
+procedure TFRM_Principal.Image3MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect5.Opacity := 0.6;
+end;
+
+procedure TFRM_Principal.Image4Click(Sender: TObject);
+begin
+  Mensagens.Encerrar_Aplicacao;
+end;
+
+procedure TFRM_Principal.Image4MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect6.Opacity := 1;
+end;
+
+procedure TFRM_Principal.Image4MouseEnter(Sender: TObject);
+begin
+  ShadowEffect6.Enabled := true;
+end;
+
+procedure TFRM_Principal.Image4MouseLeave(Sender: TObject);
+begin
+  ShadowEffect6.Enabled := false;
+end;
+
+procedure TFRM_Principal.Image4MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect6.Opacity := 0.6;
+end;
+
+procedure TFRM_Principal.Image7Click(Sender: TObject);
+begin
+  FRM_Principal.Hide;
+  FRM_Cadastro_Administrador.Show;
+end;
+
+procedure TFRM_Principal.Image7MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect7.Opacity := 1;
+end;
+
+procedure TFRM_Principal.Image7MouseEnter(Sender: TObject);
+begin
+  ShadowEffect7.Enabled := true;
+end;
+
+procedure TFRM_Principal.Image7MouseLeave(Sender: TObject);
+begin
+  ShadowEffect7.Enabled := false;
+end;
+
+procedure TFRM_Principal.Image7MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect7.Opacity := 0.6;
+end;
+
+procedure TFRM_Principal.Image8Click(Sender: TObject);
+begin
+  if Fechar_Menus = true then
+  begin
+    Num_Painel := Num_Painel_Auxiliar;
+    Timer2.Enabled := true;
+  end
+  else
+  begin
+    Num_Painel := 1;
+    Timer2.Enabled := true;
+  end;
+end;
+
+procedure TFRM_Principal.Image8MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect1.Opacity := 1;
+end;
+
+procedure TFRM_Principal.Image8MouseEnter(Sender: TObject);
+begin
+  ShadowEffect1.Enabled := true;
+end;
+
+procedure TFRM_Principal.Image8MouseLeave(Sender: TObject);
+begin
+  ShadowEffect1.Enabled := false;
+end;
+
+procedure TFRM_Principal.Image8MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect1.Opacity := 0.6;
+end;
+
+procedure TFRM_Principal.Image9Click(Sender: TObject);
+begin
+  if Fechar_Menus = true then
+  begin
+    Num_Painel := Num_Painel_Auxiliar;
+    Timer2.Enabled := true;
+  end
+  else
+  begin
+    Num_Painel := 2;
+    Timer2.Enabled := true;
+  end;
+end;
+
+procedure TFRM_Principal.Image9MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect2.Opacity := 1;
+end;
+
+procedure TFRM_Principal.Image9MouseEnter(Sender: TObject);
+begin
+  ShadowEffect2.Enabled := true;
+end;
+
+procedure TFRM_Principal.Image9MouseLeave(Sender: TObject);
+begin
+  ShadowEffect2.Enabled := false;
+end;
+
+procedure TFRM_Principal.Image9MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect2.Opacity := 0.6;
+end;
+
+procedure TFRM_Principal.Label1Click(Sender: TObject);
+begin
+  Image8Click(Image8);
+end;
+
+procedure TFRM_Principal.Label1MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect1.Opacity := 1;
+end;
+
+procedure TFRM_Principal.Label1MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect1.Opacity := 0.6;
+end;
+
+procedure TFRM_Principal.Label2Click(Sender: TObject);
+begin
+  Image9Click(Image9);
+end;
+
+procedure TFRM_Principal.Label2MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect2.Opacity := 1;
+end;
+
+procedure TFRM_Principal.Label2MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect2.Opacity := 0.6;
+end;
+
+procedure TFRM_Principal.Label3Click(Sender: TObject);
+begin
+  Image1Click(Image1);
+end;
+
+procedure TFRM_Principal.Label3MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect3.Opacity := 1;
+end;
+
+procedure TFRM_Principal.Label3MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect3.Opacity := 0.6;
+end;
+
+procedure TFRM_Principal.Label4MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect4.Opacity := 1;
+end;
+
+procedure TFRM_Principal.Label4MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect4.Opacity := 0.6;
+end;
+
+procedure TFRM_Principal.Label5MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect5.Opacity := 1;
+end;
+
+procedure TFRM_Principal.Label5MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect5.Opacity := 0.6;
+end;
+
+procedure TFRM_Principal.Label6MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect6.Opacity := 1;
+end;
+
+procedure TFRM_Principal.Label6MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect6.Opacity := 0.6;
+end;
+
+procedure TFRM_Principal.Image19Click(Sender: TObject);
+begin
+  FRM_Principal.Hide;
+  FRM_Cadastro_Curso.Show;
+end;
+
+procedure TFRM_Principal.Image19MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect15.Opacity := 1;
+end;
+
+procedure TFRM_Principal.Image19MouseEnter(Sender: TObject);
+begin
+  ShadowEffect15.Enabled := true;
+end;
+
+procedure TFRM_Principal.Image19MouseLeave(Sender: TObject);
+begin
+  ShadowEffect15.Enabled := false;
+end;
+
+procedure TFRM_Principal.Image19MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect15.Opacity := 0.6;
+end;
+
+procedure TFRM_Principal.Image21Click(Sender: TObject);
+begin
+  FRM_Principal.Hide;
+  FRM_Cadastro_Turma.Show;
+end;
+
+procedure TFRM_Principal.Image21MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect16.Opacity := 1;
+end;
+
+procedure TFRM_Principal.Image21MouseEnter(Sender: TObject);
+begin
+  ShadowEffect16.Enabled := true;
+end;
+
+procedure TFRM_Principal.Image21MouseLeave(Sender: TObject);
+begin
+  ShadowEffect16.Enabled := false;
+end;
+
+procedure TFRM_Principal.Image21MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect16.Opacity := 0.6;
+end;
+
+procedure TFRM_Principal.Image22Click(Sender: TObject);
+begin
+  FRM_Principal.Hide;
+  Frm_Cadastro_Disciplina.Show;
+end;
+
+procedure TFRM_Principal.Image22MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect17.Opacity := 1;
+end;
+
+procedure TFRM_Principal.Image22MouseEnter(Sender: TObject);
+begin
+  ShadowEffect17.Enabled := true;
+end;
+
+procedure TFRM_Principal.Image22MouseLeave(Sender: TObject);
+begin
+  ShadowEffect17.Enabled := false;
+end;
+
+procedure TFRM_Principal.Image22MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Single);
+begin
+  ShadowEffect17.Opacity := 0.6;
+end;
+
+procedure TFRM_Principal.Image2Click(Sender: TObject);
+begin
+  FRM_Principal.Hide;
+end;
+
+procedure TFRM_Principal.Panel2Click(Sender: TObject);
+begin
+  if Fechar_Menus = true then
+  begin
+    Num_Painel := Num_Painel_Auxiliar;
+    Timer2.Enabled := true;
+  end;
+end;
+
+procedure TFRM_Principal.Panel6Click(Sender: TObject);
+begin
+  if Fechar_Menus = true then
+  begin
+    Num_Painel := Num_Painel_Auxiliar;
+    Timer2.Enabled := true;
+  end;
+end;
+
+procedure TFRM_Principal.StatusBar1Click(Sender: TObject);
+begin
+  if Fechar_Menus = true then
+  begin
+    Num_Painel := Num_Painel_Auxiliar;
+    Timer2.Enabled := true;
+  end;
+end;
+
+procedure TFRM_Principal.Timer2Timer(Sender: TObject);
+begin
+  if Num_Painel = 1 then
+  begin
+    if Estado_Menu_Opcoes = false then
+    begin
+      Panel3.Visible := true;
+      if Panel3.Height < 200 then
+      begin
+        Panel3.Height := Panel3.Height + 4;
+      end;
+      if Panel3.Width < 200 then
+      begin
+        Panel3.Width := Panel3.Width + 4;
+      end
+      else
+      begin
+        Estado_Menu_Opcoes := true;
+        Timer2.Enabled := false;
+      end;
+    end
+    else
+    begin
+      if Panel3.Height > 1 then
+      begin
+        Panel3.Height := Panel3.Height - 4;
+      end;
+      if Panel3.Width > 1 then
+      begin
+        Panel3.Width := Panel3.Width - 4;
+      end;
+      if (Panel3.Height = 1) and (Panel3.Width = 1) then
+      begin
+        Panel3.Visible := false;
+        Estado_Menu_Opcoes := false;
+        Timer2.Enabled := false;
+      end;
+    end;
+  end;
+  if Num_Painel = 2 then
+  begin
+    if Estado_Menu_Usuarios = false then
+    begin
+      Panel4.Visible := true;
+      if Panel4.Height < 400 then
+      begin
+        Panel4.Height := Panel4.Height + 4;
+      end
+      else
+      begin
+        Estado_Menu_Usuarios := true;
+        Timer2.Enabled := false;
+      end;
+      if Panel4.Width < 200 then
+      begin
+        Panel4.Width := Panel4.Width + 4;
+      end;
+    end
+    else
+    begin
+      if Panel4.Height > 1 then
+      begin
+        Panel4.Height := Panel4.Height - 4;
+      end;
+      if Panel4.Width > 1 then
+      begin
+        Panel4.Width := Panel4.Width - 4;
+      end;
+      if (Panel4.Height = 1) and (Panel4.Width = 1) then
+      begin
+        Panel4.Visible := false;
+        Estado_Menu_Usuarios := false;
+        Timer2.Enabled := false;
+      end;
+    end;
+  end;
+  if Num_Painel = 3 then
+  begin
+    if Estado_Menu_Ferramentas = false then
+    begin
+      Panel5.Visible := true;
+      if Panel5.Height < 200 then
+      begin
+        Panel5.Height := Panel5.Height + 4;
+      end;
+      if Panel5.Width < 200 then
+      begin
+        Panel5.Width := Panel5.Width + 4;
+      end
+      else
+      begin
+        Estado_Menu_Ferramentas := true;
+        Timer2.Enabled := false;
+      end;
+    end
+    else
+    begin
+      if Panel5.Height > 1 then
+      begin
+        Panel5.Height := Panel5.Height - 4;
+      end;
+      if Panel5.Width > 1 then
+      begin
+        Panel5.Width := Panel5.Width - 4;
+      end;
+      if (Panel5.Height = 1) and (Panel5.Width = 1) then
+      begin
+        Panel5.Visible := false;
+        Estado_Menu_Ferramentas := false;
+        Timer2.Enabled := false;
+      end;
+    end;
+  end;
+end;
+
+end.

@@ -1,0 +1,58 @@
+inherited Frm_Cadastro_Coordenador_SmXhdpiPh: TFrm_Cadastro_Coordenador_SmXhdpiPh
+  ClientHeight = 375
+  DesignerMasterStyle = 0
+  inherited StatusBar1: TStatusBar
+    Position.Y = 353.000000000000000000
+  end
+  inherited ScaledLayout1: TScaledLayout
+    OriginalHeight = 353.000000000000000000
+    Size.Height = 353.000000000000000000
+    inherited GroupBox1: TGroupBox
+      inherited Edit3: TEdit
+        Size.Height = 32.000000000000000000
+        inherited PasswordEditButton1: TPasswordEditButton
+          Size.Height = 28.000000000000000000
+        end
+        inherited ClearEditButton3: TClearEditButton
+          Size.Width = 32.000000000000000000
+          Size.Height = 30.000000000000000000
+        end
+      end
+      inherited Label3: TLabel
+        Size.Width = 56.000000000000000000
+        Size.Height = 22.000000000000000000
+      end
+      inherited Edit2: TEdit
+        Size.Height = 32.000000000000000000
+        inherited ClearEditButton2: TClearEditButton
+          Size.Width = 32.000000000000000000
+          Size.Height = 30.000000000000000000
+        end
+      end
+      inherited Label2: TLabel
+        Size.Width = 50.000000000000000000
+        Size.Height = 22.000000000000000000
+      end
+      inherited Edit1: TEdit
+        Size.Height = 32.000000000000000000
+        inherited ClearEditButton1: TClearEditButton
+          Size.Width = 32.000000000000000000
+          Size.Height = 30.000000000000000000
+        end
+      end
+      inherited Label1: TLabel
+        Size.Width = 54.000000000000000000
+        Size.Height = 22.000000000000000000
+      end
+    end
+    inherited Panel1: TPanel
+      Size.Height = 299.000000000000000000
+      inherited ScaledLayout2: TScaledLayout
+        Size.Height = 299.000000000000000000
+      end
+    end
+    inherited StatusBar2: TStatusBar
+      Position.Y = 331.000000000000000000
+    end
+  end
+end
